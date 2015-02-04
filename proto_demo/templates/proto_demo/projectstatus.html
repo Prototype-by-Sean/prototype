@@ -8,47 +8,43 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-<h1>{{ project.project_name }}</h1><br>
+    <div class="container">
+        <h1>{{ project.project_name }}</h1><br>
+        <h3>項目擁有者</h3>
+        {% for user in project.project_starter.all %}   <!--把項目發起者都列出來，之後要顯示圖片-->
+            {{ user }}<br>
+        {% endfor %}<br>
 
-<h3>項目擁有者</h3>
-{% for user in project.project_starter.all %}
-    {{ user }}<br>
-{% endfor %}<br>
+        <h3>封面</h3>
+        <img src="{{ project.project_cover.url }}">
 
-{% if request.user in project.project_starter.all%}
+        <h3>細節</h3>
+        <div>
+            {{ project.project_detail|safe }}
+        </div>
 
-<h3>封面</h3>
-    <img src="{{ project.project_cover.url }}">
-<h3>需求領域</h3>
-{% for major in project.project_request_major.all %}
-    {{ major }}<br>
-{% endfor %}
-<br>
+    {% if request.user in project.project_starter.all%} <!--以下內容只有發起者看的見-->
+        <h3>需求領域</h3>
+        {% for major in project.project_request_major.all %}
+            {{ major }}<br>
+        {% endfor %}<br>
 
-<h3>配對結果</h3>
-<br>
+        <h3>配對結果</h3><br>
+            {% for maker in result %}                   <!--用for帶出每個maker-->
+                <dl>
+                <dt>{{ maker }}</dt>                    <!--輸出maker名子作為清單標題-->
+                    {% for m_j in maker.maker_major.all %}  <!--用第二個for"逐一帶出"當下"maker中的maker_major欄位裡面所有物件-->
+                        {% if m_j in p_request_major %}     <!--如果當下的maker_majro有包含在p_request_major裡面就顯示-->
+                            <dd>{{ m_j }}</dd>
+                        {% else %}                      <!--如果沒有包含在p_request_major裡面就不顯示-->
+                            <dd class="hidden_major">{{ m_j }}</dd>
+                        {% endif %}
+                    {% endfor %}<br>
+                </dl>
+            {% endfor %}<br>
+    {% endif %}
 
-{% for maker in result %}                   <!--用for帶出每個maker-->
-    <dl>
-    <dt>{{ maker }}</dt>                    <!--輸出maker名子-->
-    {% for m_j in maker.maker_major.all %}  <!--用第二個for"逐一帶出"當下"maker中的maker_major欄位裡面所有物件-->
-        {% if m_j in p_request_major %}     <!--如果當下的maker_majro有包含在p_request_major裡面就顯示-->
-            <dd>{{ m_j }}</dd>
-            {% else %}                      <!--如果沒有包含在p_request_major裡面就不顯示-->
-            <dd class="hidden_major">{{ m_j }}</dd>
-        {% endif %}
-    {% endfor %}<br>
-    </dl>
-{% endfor %}
-
-<br><br>
-
-<p>日期<br>{{ project.pub_date }}<br>
-</p>
-
-{% endif %}
-</div>
-
+    <p>日期<br>{{ project.pub_date }}<br></p>
+    </div>
 
 {% endblock %}
