@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from views import media_view
+#from views import media_view
 
 
 urlpatterns = patterns('',
@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^demo/', include('proto_demo.urls', namespace = 'proto_demo')),
-    url(r'^media/(?P<path>.*)', media_view),
+    #url(r'^media/(?P<path>.*)', media_view),
 
 
     #include means proto_demo.urls take control for every url after demo/

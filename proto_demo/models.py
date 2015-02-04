@@ -44,8 +44,8 @@ class Maker(models.Model):
 class Project(models.Model):
     project_category = models.ForeignKey(Category)
     #because we want maker 'choose' but enter any category
-    #match with maker_relate
     project_name = models.CharField(max_length=200)
+    project_cover = models.ImageField(upload_to=_upload_path,blank=True)
     project_starter = models.ManyToManyField(User, related_name='starter')
     #current login user
     project_request_major = models.ManyToManyField(Major)

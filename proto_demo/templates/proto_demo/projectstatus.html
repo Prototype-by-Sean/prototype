@@ -18,7 +18,8 @@
 
 {% if request.user in project.project_starter.all%}
 
-
+<h3>封面</h3>
+    <img src="{{ project.project_cover.url }}">
 <h3>需求領域</h3>
 {% for major in project.project_request_major.all %}
     {{ major }}<br>

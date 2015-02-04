@@ -198,8 +198,8 @@ def MakerProfileView(request,pk):
 @login_required
 def StartProjectFormView(request):
     if request.method == "POST":
-        form = StartProjectForm(request.POST,)
-        #form with data
+        form = StartProjectForm(request.POST,request.FILES)
+        #form with data 要上傳檔案,所以要加request.FILES
         if form.is_valid():
             project_form = form.save(commit=False)
             project_form.pub_date = datetime.now()

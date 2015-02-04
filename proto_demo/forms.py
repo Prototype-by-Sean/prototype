@@ -102,13 +102,14 @@ class StartProjectForm(forms.ModelForm):
 
     class Meta:
         model = Project
-        fields = ('project_category','project_name','project_request_major','project_detail')
+        fields = ('project_category','project_name','project_cover','project_request_major','project_detail')
         widgets = {
             'project_detail':CKEditorWidget(),
             'project_request_major':forms.CheckboxSelectMultiple(),
         }
         labels = {
             'project_category':'項目分類',
+            'project_cover':'項目封面',
             'project_name':'項目名稱',
             'project_request_major':'需求領域',
             'project_detail':'項目細節'

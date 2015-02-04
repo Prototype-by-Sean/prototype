@@ -1,13 +1,15 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-import os
-import mimetypes
-import settings
-from django.http import HttpResponseRedirect, HttpResponse,HttpResponseForbidden
-from bs4 import BeautifulSoup
-import urllib2
 
-def media_view(request, path):
+# -*- coding: utf-8 -*-
+#from __future__ import unicode_literals
+#import os
+#import mimetypes
+#import settings
+#from django.http import HttpResponseRedirect, HttpResponse,HttpResponseForbidden
+#from bs4 import BeautifulSoup
+#import urllib2
+
+#def media_view(request, path):
+'''
     # 假設你的 URL rule 長這樣：r'/media/(?P<path>.*)'
     # 那麼 path 現在應該會長得像這樣："uranusjr/<3.png"
     # 如果使用者不符合，就直接吐 HTTP 403。你可以用自己喜歡的回應。
@@ -29,3 +31,4 @@ def media_view(request, path):
         fn=os.path.basename(abspath),
         )
     return response
+'''

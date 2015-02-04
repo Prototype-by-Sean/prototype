@@ -11,7 +11,8 @@ class MakerInline(admin.TabularInline):
     model = Project.project_starter.through
 
 class ProjectlAdmin(admin.ModelAdmin):
-    fields = ('project_name','project_category','project_starter','project_request_major','project_detail','project_file')
+    fields = ('project_name','project_cover','project_category','project_starter','project_request_major',
+              'project_detail','project_file')
     list_display = ('pk','project_name','project_category','pub_date')
     list_filter = ('project_starter','project_category','project_request_major')
     inlines = [MakerInline]
