@@ -1,18 +1,68 @@
-{% extends 'proto_demo/base.html' %}
-{% load bootstrap3 %}
-{% load staticfiles %}
+<html>
+<head lang = "en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link  href="style.css" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="/prototype/static/js/project_status.js"></script>
+</head>
+<body id="body">
+<div class = "nav">
+    <p class = "logo">LOGO</p><!--LOGO-->
+    <div class="leftArea">
+        <p class = "nav_left">發現</p>
+        <p class = "nav_left">開始</p>
+    </div>
+    <form class = "nav_mid"></form>
+    <div class="rightArea">
+        <p class = "nav_right">報名</p>
+        <p class = "nav_right">登錄</p>
+    </div>
+</div> <!--標題-->
 
-{# 繼承的block 不要把他呼叫出來才不會被覆蓋  #}
-{{% block title %}
+<div>
+    <p class = "navsec">我是副標1</p>
+    <p class = "navsec_sec">我是副標2</p>
+</div><!--副標題-->
+<div  class = "secArea">
+    <div class = 'video'>
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/sL-ul6SnKMM" ></iframe>
+    </div>
+    <div>
+        <div>
+            <p class="status_backers">{{贊助者數量}}</p>
+            <P class="status_backers_sec">個贊助者</P>
+        </div>
+        <div>
+            <p class="status_backers">{{已募金額}}</p>
+            <P class="status_backers_sec">已募金額</P>
+        </div>
+        <div>
+            <p class="status_backers">{{剩餘天數}}</p>
+            <P class="status_backers_sec">剩餘天數</P>
+        </div>
+        <p class="Back_This_Project">Back This Project</p>
+    </div>
+
+</div>
+
+
+<div class="hide">
+    {% extends 'proto_demo/base.html' %}
+    {% load bootstrap3 %}
+    {% load staticfiles %}
+
+    {# 繼承的block 不要把他呼叫出來才不會被覆蓋  #}
+    {{% block title %}
     Prototype
-{% endblock %}
+    {% endblock %}
 
-{% block content %}
+    {% block content %}
     <div class="container">
         <h1>{{ project.project_name }}</h1><br>
         <h3>項目擁有者</h3>
         {% for user in project.project_starter.all %}   <!--把項目發起者都列出來，之後要顯示圖片-->
-            {{ user }}<br>
+        {{ user }}<br>
         {% endfor %}<br>
 
         <h3>封面</h3>
@@ -23,28 +73,36 @@
             {{ project.project_detail|safe }}
         </div>
 
-    {% if request.user in project.project_starter.all%} <!--以下內容只有發起者看的見-->
+        {% if request.user in project.project_starter.all%} <!--以下內容只有發起者看的見-->
         <h3>需求領域</h3>
         {% for major in project.project_request_major.all %}
-            {{ major }}<br>
+        {{ major }}<br>
         {% endfor %}<br>
 
         <h3>配對結果</h3><br>
-            {% for maker in result %}                   <!--用for帶出每個maker-->
-                <dl>
-                <dt>{{ maker }}</dt>                    <!--輸出maker名子作為清單標題-->
-                    {% for m_j in maker.maker_major.all %}  <!--用第二個for"逐一帶出"當下"maker中的maker_major欄位裡面所有物件-->
-                        {% if m_j in p_request_major %}     <!--如果當下的maker_majro有包含在p_request_major裡面就顯示-->
-                            <dd>{{ m_j }}</dd>
-                        {% else %}                      <!--如果沒有包含在p_request_major裡面就不顯示-->
-                            <dd class="hidden_major">{{ m_j }}</dd>
-                        {% endif %}
-                    {% endfor %}<br>
-                </dl>
+        {% for maker in result %}                   <!--用for帶出每個maker-->
+        <dl>
+            <dt>{{ maker }}</dt>                    <!--輸出maker名子作為清單標題-->
+            {% for m_j in maker.maker_major.all %}  <!--用第二個for"逐一帶出"當下"maker中的maker_major欄位裡面所有物件-->
+            {% if m_j in p_request_major %}     <!--如果當下的maker_majro有包含在p_request_major裡面就顯示-->
+            <dd>{{ m_j }}</dd>
+            {% else %}                      <!--如果沒有包含在p_request_major裡面就不顯示-->
+            <dd class="hidden_major">{{ m_j }}</dd>
+            {% endif %}
             {% endfor %}<br>
-    {% endif %}
+        </dl>
+        {% endfor %}<br>
+        {% endif %}
 
-    <p>日期<br>{{ project.pub_date }}<br></p>
+        <p>日期<br>{{ project.pub_date }}<br></p>
     </div>
 
-{% endblock %}
+    {% endblock %}
+</div>
+
+</body>
+</html>
+
+
+
+
