@@ -27,7 +27,7 @@ fieldfile = FieldFile(None, FakeField, 'dummy.txt')
 
 
 class HomePageView(TemplateView):
-    template_name = 'proto_demo/home.html'
+    template_name = 'proto_demo/home/home.html'
 
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
@@ -36,32 +36,32 @@ class HomePageView(TemplateView):
 
 
 class DefaultFormsetView(FormView):
-    template_name = 'proto_demo/formset.html'
+    template_name = 'proto_demo/examples/formset.html'
     form_class = ContactFormSet
 
 
 class DefaultFormView(FormView):
-    template_name = 'proto_demo/form.html'
+    template_name = 'proto_demo/examples/form.html'
     form_class = ContactForm
 
 
 class DefaultFormByFieldView(FormView):
-    template_name = 'proto_demo/form_by_field.html'
+    template_name = 'proto_demo/examples/form_by_field.html'
     form_class = ContactForm
 
 
 class FormHorizontalView(FormView):
-    template_name = 'proto_demo/form_horizontal.html'
+    template_name = 'proto_demo/examples/form_horizontal.html'
     form_class = ContactForm
 
 
 class FormInlineView(FormView):
-    template_name = 'proto_demo/form_inline.html'
+    template_name = 'proto_demo/examples/form_inline.html'
     form_class = ContactForm
 
 
 class FormWithFilesView(FormView):
-    template_name = 'proto_demo/form_with_files.html'
+    template_name = 'proto_demo/examples/form_with_files.html'
     form_class = FilesForm
 
     def get_context_data(self, **kwargs):
@@ -75,7 +75,7 @@ class FormWithFilesView(FormView):
         }
 
 class PaginationView(TemplateView):
-    template_name = 'proto_demo/pagination.html'
+    template_name = 'proto_demo/examples/pagination.html'
 
     def get_context_data(self, **kwargs):
         context = super(PaginationView, self).get_context_data(**kwargs)
@@ -97,7 +97,7 @@ class PaginationView(TemplateView):
 
 
 class MiscView(TemplateView):
-    template_name = 'proto_demo/misc.html'
+    template_name = 'proto_demo/examples/misc.html'
 
 #-------------------------------------------------Prototype View----------------------------------------------
 
@@ -186,13 +186,13 @@ def user_login(request):
     else:
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
-        return render(request, 'proto_demo/login.html', {'login_form':LoginForm,'next': request.GET.get('next','')})
+        return render(request, 'proto_demo/home/login.html', {'login_form':LoginForm,'next': request.GET.get('next','')})
 
 
 @login_required
 def MakerProfileView(request,pk):
         maker = get_object_or_404(Maker,pk = pk)
-        return render(request,'proto_demo/maker_profile.html',{'maker':maker})
+        return render(request, 'proto_demo/makers/maker_profile.html',{'maker':maker})
 
 
 @login_required
@@ -214,7 +214,7 @@ def StartProjectFormView(request):
     else:
         form = StartProjectForm()
         #empty form
-    return render(request, 'proto_demo/start_project.html', {'form': form,})
+    return render(request, 'proto_demo/projects/start_project.html', {'form': form,})
 
 
 @login_required
@@ -260,7 +260,7 @@ def ProjectStatusView(request,pk):
     # **lambda用法:
     # 以relatemaker_majro 的多寡排序=>sorted方法參照 key, key=建立一個匿名功能 參數是 k , k 帶入函式 len(result[k])
 
-    return render(request, 'proto_demo/projectstatus.html', {'project': project,
+    return render(request, 'proto_demo/projects/projectstatus.html', {'project': project,
                                                              'relatemaker':relatemaker,
                                                              'relatemaker_i_majro':relatemaker_i_majro, #沒用到
                                                              'result':result,
@@ -271,7 +271,7 @@ def ProjectStatusView(request,pk):
 
 @login_required
 def MakerBlogView(request,pk):
-    return render(request, 'proto_demo/maker_blog.html')
+    return render(request, 'proto_demo/makers/maker_blog.html')
 
 
 def Match(object):
