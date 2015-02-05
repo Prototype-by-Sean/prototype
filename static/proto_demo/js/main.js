@@ -2,16 +2,17 @@
 var timer;
 
     var main = function() {
-        $('.frame').hover(
+/*        $('.innerframe').hover(
             function(){
                 sliderin = $('.description',this);
-                timer = setTimeout(function(){sliderin.show(200);}, 600);
+                timer = setTimeout(function(){sliderin.slideDown(200);}, 600);
             },
             function() {
                 clearTimeout(timer);
-                $('.description',this).hide('slow');
+                $('.description',this).slideUp('slow');
             }
-        );
+        );*/
+        //為豐富版面捨棄這個功能
 
         $('.learnmore').hover(
             function(){

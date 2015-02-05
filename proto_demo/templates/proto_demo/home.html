@@ -8,6 +8,27 @@
 {% endblock %}
 
 {% block content %}
+    <style>
+    #project_1{
+        background-image:url('/static/proto_demo/image/designer/bennylin/rocket%20alarm_1.png');
+    }
+    #project_2{
+        background-image: url('/static/proto_demo/image/designer/bennylin/apron_1.png');
+    }
+    #project_3{
+        background-image: url('/static/proto_demo/image/designer/bennylin/eco%20broom_2.png');
+    }
+    #project_4{
+        background-image: url('/static/proto_demo/image/designer/bennylin/earplugs_1.png');
+    }
+    #project_5{
+    background-image: url('');
+    }
+    #project_6{
+    background-image: url('');
+    }
+    </style>
+
     <div class="jumbotron"></div>
     <div class="container" id="headline">
             <h1>Prototype</h1>
@@ -74,10 +95,9 @@
 </div>
 -->
 
-<div class="projects">
-    <div class="container">
+<div class="projects container">
         <div id="project-head">
-            <div class="col-md-12">
+            <div class="col-md-12 col-xs-12">
                 <h2><i class="glyphicon glyphicon-th"></i>&nbsp&nbspProjects</h2>
                     <form class="searchbar pull-right">
                          <input type="text" placeholder=" 尋找項目" style="width: 150px;">
@@ -87,71 +107,86 @@
                     </form>
             </div>
         </div>
-        <div class="row">
-                <div class="col-md-4">
-                    <a class="frame" id="project_1" href="#">
-                        <div class="description">
+        <div class="row projectrow">
+            <a href="#">
+                <div class="col-md-4 col-sm-4 col-xs-4 frame">
+                    <div class="innerframe"  id="project_1">
+                        <div class="description">   <!--只繼承frame? 為什麼??-->
                         <h3>Rocket Alarm</h3>
                         <p>想讓鬧鐘停止嗎?<br>快去找找你的火箭吧!</p>
                         </div>
-                     </a>
+                    </div>
                 </div>
-                <!--在colmd4的底下兩個div 會平分 row的空間 ?!-->
-                <div class="col-md-4">
-                    <a class="frame" id="project_2" href="#">
+            </a>
+
+            <a href="#">
+                <div class="col-md-4 col-sm-4 col-xs-4 frame">
+                    <div class="innerframe"  id="project_2">
                         <div class="description">
                             <h3>Apron</h3>
                             <p>....</p>
                             <p></p>
                         </div>
-                    </a>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <a class="frame" id="project_3" href="#">
+            </a>
+
+            <a href="#">
+                <div class="col-md-4 col-sm-4 col-xs-4 frame">
+                    <div class="innerframe" id="project_3">
                         <div class="description">
                             <h3>Eco Broom</h3>
                             <p>....</p>
                             <p></p>
                         </div>
-                    </a>
+                    </div>
                 </div>
+            </a>
+
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <a class="frame" id="project_4" href="#">
+        <div class="row projectrow">
+            <a href="#">
+            <div class="col-md-4 col-sm-4 col-xs-4 frame">
+                <div class="innerframe" id="project_4">
                     <div class="description">
                         <h3>Earplugs</h3>
                         <p>....</p>
                         <p></p>
                     </div>
-                </a>
+                </div>
              </div>
-            <div class="col-md-4">
-                <a class="frame" id="project_5" href="#">
+            </a>
+
+            <a href="#">
+            <div class="col-md-4 col-sm-4 col-xs-4 frame">
+                <div class="innerframe" id="project_5">
                     <div class="description">
                         <h3>Project 5</h3>
                         <p>....</p>
                         <p></p>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col-md-4">
-                <a class="frame" id="project_6" href="#">
+            </a>
+
+            <a href="#">
+            <div class="col-md-4 col-sm-4 col-xs-4 frame">
+                <div class="innerframe" id="project_6">
                     <div class="description">
                         <h3>Project 6</h3>
                         <p>....</p>
                         <p></p>
                     </div>
-                </a>
+                </div>
             </div>
+            </a>
         </div>
-    </div>
 </div>
 
 <div class="maker">
     <div class="container">
         <div id="maker-head">
-            <div class="col-md-12">
+            <div class="col-md-12 col-xs-12">
                 <h2><i class="fa fa-users"></i>&nbsp&nbspMaker</h2>
                 <form class="searchbar pull-right">
                     <input type="text" placeholder=" 尋找Maker" style="width: 150px">
@@ -161,62 +196,69 @@
                 </form>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <a class="frame" id="maker_1" href="#">
+        <div class="row makerrow">
+            <a href="#">
+            <div class="col-md-4 col-sm-4 col-xs-4 frame">
+                <div class="innerframe" id="maker_1">
                     <div class="description">
-                        <h3>Benny Lin</h3>
+                        <h3>Dennis</h3>
                         <p>設計師<br>Taipei</p>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col-md-4">
-                <a class="frame" id="maker_2" href="#">
+            </a>
+            <a href="#">
+            <div class="col-md-4 col-sm-4 col-xs-4 frame">
+                <div class="innerframe" id="maker_1">
                     <div class="description">
-                        <h3>maker 2</h3>
-                        <p>....</p>
-                        <p></p>
+                        <h3>A110482</h3>
+                        <p>Coder<br>Kaohsiung</p>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col-md-4">
-                <a class="frame" id="maker_3" href="#">
+            </a>
+            <a href="#">
+            <div class="col-md-4 col-sm-4 col-xs-4 frame">
+                <div class="innerframe" id="maker_1">
                     <div class="description">
-                        <h3>maker 3</h3>
-                        <p>....</p>
-                        <p></p>
+                        <h3>Kristine</h3>
+                        <p>藝術家<br>Taipei</p>
                     </div>
-                </a>
+                </div>
             </div>
+            </a>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <a class="frame" id="maker_4" href="#">
+        <div class="row makerrow">
+            <a href="#">
+            <div class="col-md-4 col-sm-4 col-xs-4 frame">
+                <div class="innerframe" id="maker_1">
                     <div class="description">
-                        <h3>maker 4</h3>
-                        <p>....</p>
-                        <p></p>
+                        <h3>...</h3>
+                        <p>...<br>Taipei</p>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col-md-4">
-                <a class="frame" id="maker_5" href="#">
+            </a>
+            <a href="#">
+            <div class="col-md-4 col-sm-4 col-xs-4 frame">
+                <div class="innerframe" id="maker_1">
                     <div class="description">
-                        <h3>maker 5</h3>
-                        <p>....</p>
-                        <p></p>
+                        <h3>...</h3>
+                        <p>...<br>Taipei</p>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col-md-4">
-                <a class="frame" id="maker_6" href="#">
+            </a>
+            <a href="#">
+            <div class="col-md-4 col-sm-4 col-xs-4 frame">
+                <div class="innerframe" id="maker_1">
                     <div class="description">
-                        <h3>maker 6</h3>
-                        <p>....</p>
-                        <p></p>
+                        <h3>...</h3>
+                        <p>...<br>Taipei</p>
                     </div>
-                </a>
+                </div>
             </div>
+            </a>
         </div>
     </div>
 </div>
