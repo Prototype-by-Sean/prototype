@@ -57,7 +57,7 @@ class NewMakerForm(forms.ModelForm):
             'first_name':forms.TextInput(attrs={'placeholder': '該怎麼稱呼您?',}),
         }
 
-#    def clean(self, *args, **kwargs):
+#   def clean(self, *args, **kwargs):
 #        super(NewMakerForm,self).clean()
 #        pic, = Maker.objects.get_or_create(profile_pic=self.cleaned_data.get('profile_pic'))
 #        self.cleaned_data['profile_pic'] = pic.profile_pic

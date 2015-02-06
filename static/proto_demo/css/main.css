@@ -92,7 +92,6 @@ body{
 
 .row{
     margin-bottom: 35px;
-    height: 300px;
 }
 
 
@@ -149,105 +148,118 @@ body{
 #maker-head *{
     display: inline;
 }
-.projects p{
-    font-family: "Microsoft JhengHei";
-}
-.maker p{
-    font-family: "Microsoft JhengHei";
-}
+
+
 .projects h2{
     color: rgba(169,3,41,1);
-    text-shadow:1px 1px 1px #464646;}
+    text-shadow:1px 1px 1px #919191;}
 
-.maker h2{
-    color: rgba(169,3,41,1);
-    text-shadow:1px 1px 1px #464646;}
 
 
 .projects i{
     vertical-align: bottom;
     color: rgba(169,3,41,1);
-
 }
 
-.maker i{
-    vertical-align: bottom;
-    color: rgba(169,3,41,1);
-
-}
-
-.projects span:focus{
+.projectrow{
+    margin-bottom: 180px;
+    height: 300px;
 
 }
 
 .frame{
-    padding-top:94px;
-    height: 300px;
-    text-align: right;
-    border-radius: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
     background-repeat: no-repeat;
-    box-shadow: 1px 1px 3px rgba(109,0,25,1);
-    border: 2px solid rgb(207, 38, 0);
-    background-size:cover ;
-    width: 80%;
+    height: 100%;
+    /*width: 80%;
     position: absolute;
+    border: 2px solid rgb(207, 38, 0);
+    box-shadow: 1px 1px 3px rgba(109,0,25,1);
+    padding-top:94px;
+    */
+}
+
+.innerframe{
+    box-shadow:1px 1px 2px rgba(169,3,41,1);
+    background-size:cover;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin-top: 10px;
 }
 
 
 .description {
-    padding:2px 10px 0 0;
-    background-color: rgba(248,248,255,0.5);
-    height: 100px;
+    /*padding:2px 10px 0 0;*/
+    background-color: #ffffff;
+    height: 33%;
     width: 100%;
-    position: absolute;
-    border-radius: 12px;
-    bottom: 0px;
-    display: none;
+    text-align: left;
+    position: relative;
+    bottom: -100%;
+    box-shadow:1px 1px 2px rgba(169,3,41,1);
 }
 
 
-.frame:hover{
-    box-shadow:1px 1px 10px rgb(245, 70, 0);
+.innerframe:hover{
+    box-shadow:1px 1px 2px rgb(245, 70, 0);
 }
 
-
-#project_1{
-    background-image:url('/static/proto_demo/image/designer/bennylin/rocket%20alarm_1.png');
-}
-
-#project_2{
-    background-image: url('/static/proto_demo/image/designer/bennylin/apron_1.png');
-}
-
-#project_3{
-    background-image: url('/static/proto_demo/image/designer/bennylin/eco%20broom_2.png');
-}
-
-#project_4{
-    background-image: url('/static/proto_demo/image/designer/bennylin/earplugs_1.png');
-}
-
-#project_5{
-    background-image: url('');
-}
-
-#project_6{
-    background-image: url('');
+.description:hover{
+    box-shadow:1px 1px 2px rgb(245, 70, 0);
 }
 
 .projects h3 {
+    color: #000000;
+    text-shadow: 1px 1px 1px #ffffff;
     font-family: 'Poiret One', cursive;
+    font-weight: bold;
     font-size: 24px;
     text-align: right;
+    padding: 10px 10px 0 0;
+    /*margin:0;   這行是因為bootstrap有定義h3 不在此把她設0 slidedown會影響父物件*/
+}
+
+.projects p{
+    font-family: "Microsoft JhengHei";
+    color: #000000;
+    padding: 0 10px 10px 10px;
 }
 
 .projects a {
     color:#4C0000;
 }
 
-.projects a:hover{
-    text-decoration: none;
-    text-shadow: 0 0 10px #4C0000;
+
+.maker h2{
+    color: rgba(169,3,41,1);
+    text-shadow:2px 2px 2px #919191;}
+
+.makerrow{
+    margin-bottom: 180px;
+    height: 300px;
+}
+
+.maker h3 {
+    color: #000000;
+    text-shadow: 1px 1px 1px #ffffff;
+    font-family: 'Poiret One', cursive;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: right;
+    padding: 10px 10px 0 0;
+}
+
+.maker p{
+    font-family: "Microsoft JhengHei";
+    color: #000000;
+    padding: 0 10px 10px 10px;
+}
+
+.maker i{
+    vertical-align: bottom;
+    color: rgba(169,3,41,1);
 }
 
 footer{

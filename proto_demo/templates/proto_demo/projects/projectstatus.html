@@ -70,7 +70,7 @@
 
         <h3>細節</h3>
         <div>
-            {{ project.project_detail|safe }}
+            {{ project.project_detail|safe }}           <!--要用safe 這個filter 才不會顯示raw html-->
         </div>
 
         {% if request.user in project.project_starter.all%} <!--以下內容只有發起者看的見-->
