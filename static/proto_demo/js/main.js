@@ -1,5 +1,5 @@
 
-var timer;
+//var timer;
 
     var main = function() {
 /*        $('.innerframe').hover(
