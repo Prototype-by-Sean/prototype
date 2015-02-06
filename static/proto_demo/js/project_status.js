@@ -4,32 +4,32 @@ var width_move = function() {
     $('.status_backers').addClass('status_backers_phone');
     $('.status_backers_sec').addClass('status_backers_sec_phone');
 }//if判斷式的公用部分
-
 var main = function() {
     $('.logo').hover(function(){
         $('.logo').toggleClass('change');
     });//切換LOGE顏色
-
     var height_1 = $(window).height();//取得視窗取得視窗高度
     var width_2 = $(window).width();   //視窗實際寬度
-    $('.secArea').height(height_1);//指定影片父屬性高度
     if (width_2 < 600){
         $(width_move());
     }
-    var timer2;
-    var timer;
+var flag=0,flag_2=0,timer,timer_2;
+window.addEventListener("scroll",function(){
 
-    var mousewheel = (/Firefox/i.test(navigator.userAgent)) ?   //判斷瀏覽器是誰
-        "DOMMouseScroll" : "mousewheel";
-    var flags = 0 ;
+    if(flag<1) {
+
+        flag=flag+1;
+        var height_top = $(document).scrollTop();
+        timer = setTimeout(function() {
+            var height_top_2 = $(document).scrollTop();
+            if(height_top_2-height_top>0){
+                alert(flag);
+            }
+        },1000);
+    }
+},false);
 
 
-    window.addEventListener(scrollbars,//對整個視窗監聽，對象是滑鼠滾輪事件
-        function() {
-            var h = $(document).scrollTop();
-            alert(h);
-        }
-        ,false);//滑鼠滾輪動作_false使傳回值優先作用於子區塊
     /*25-73概念圖
      if滾輪向上{
      if(現在離頁頂超過20%){
@@ -43,33 +43,15 @@ var main = function() {
      以下code延遲1500ms(隱藏(150), nav，移除固定，顯示(0),紀錄__滾輪下次算第一次向上滾)
      }
      if(現在正在向上滾){
-
      }
      }
-
      }
      else if滾輪往下{}
-
-
-
-
      */
-
-
-
-
-
-
-
 };
 $(document).ready(main);
-
 $(window).resize(function () {
-
-    var height_2 = $(window).height();
-    $('.secArea').height(height_2);
-    var width_2 = $(window).width()-16;
-
+    var width_2 = $(window).width();
     if (width_2 < 600){
         $(width_move());
     }
@@ -77,6 +59,5 @@ $(window).resize(function () {
         $('.video').removeClass('video_phone');
         $('.status_backers').removeClass('status_backers_phone');
         $('.status_backers_sec').removeClass('status_backers_phone');
-
     }
 });//滑鼠縮放事件
