@@ -2,9 +2,9 @@
 <head lang = "en">
     <meta charset="UTF-8">
     <title></title>
-    <link  href="style.css" rel="stylesheet">
+    <link  href="/static/proto_demo/css/project_status.css" rel="stylesheet">
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-    <script src="/prototype/static/proto_demo/js/project_status.js"></script>
+    <script src="/static/proto_demo/js/project_status.js"></script>
 </head>
 <body id="body">
 <div class = "nav">
@@ -30,15 +30,15 @@
     </div>
     <div>
         <div>
-            <p class="status_backers">{{贊助者數量}}</p>
+            <p class="status_backers">{贊助者數量}</p>
             <P class="status_backers_sec">個贊助者</P>
         </div>
         <div>
-            <p class="status_backers">{{已募金額}}</p>
+            <p class="status_backers">{已募金額}</p>
             <P class="status_backers_sec">已募金額</P>
         </div>
         <div>
-            <p class="status_backers">{{剩餘天數}}</p>
+            <p class="status_backers">{剩餘天數}</p>
             <P class="status_backers_sec">剩餘天數</P>
         </div>
         <p class="Back_This_Project">Back This Project</p>
@@ -55,6 +55,15 @@
     {# 繼承的block 不要把他呼叫出來才不會被覆蓋  #}
     {{% block title %}
     Prototype
+    {% endblock %}
+
+    {%block bootstrap3_extra_head %}
+        <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400;300' rel='stylesheet' type='text/css'>
+        <link href="/static/proto_demo/css/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="/static/proto_demo/js/project_status.js"></script>
+        <link rel="stylesheet" href="/static/proto_demo/css/main.css">
+        <link rel="stylesheet" href="/static/proto_demo/css/project_status.css">
     {% endblock %}
 
     {% block content %}
