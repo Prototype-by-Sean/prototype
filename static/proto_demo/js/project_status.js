@@ -7,6 +7,8 @@ var main = function() {
     $('.logo').hover(function(){
         $('.logo').toggleClass('change');
     });//切換LOGE顏色
+    $('.nav').mouseenter(function(){clearTimeout(timer_2);});
+    $('.nav').mouseleave(function(){timer_2=setTimeout(function(){$('.nav').slideUp(500);},1000);});
     var height_1 = $(window).height();//取得視窗取得視窗高度
     var width_2 = $(window).width();   //視窗實際寬度
     if (width_2 < 600){
@@ -14,6 +16,9 @@ var main = function() {
     }
 var flag=0,flag_2=0,timer,timer_2;
     var scrollTest=function(){
+        if($(document).scrollTop()==0){
+            $('.nav').addClass('test').slideDown(500);
+            clearTimeout(timer_2);}
         if(flag==0) {
             var height_top = $(document).scrollTop();
             timer = setTimeout(function () {
@@ -26,11 +31,14 @@ var flag=0,flag_2=0,timer,timer_2;
                 else if (height_top_2 - height_top < 0 && flag==0) {
                     flag=1;
                     $('.nav').addClass('test').slideDown(500);
+                    clearTimeout(timer_2);
+                    timer_2=setTimeout(function(){$('.nav').slideUp(500);},3000);
                     setTimeout(function(){flag=0},500);
                 }
-            }, 100);
+            }, 10);
         }
     };
+
 window.addEventListener("scroll",scrollTest,false);
 
 
