@@ -1,4 +1,3 @@
-//https://mega.co.nz/#F!2FUFiBbL!59MRLm1kckSrJM97-FG3VA
 var width_move = function() {
     $('.video').addClass('video_phone');
     $('.status_backers').addClass('status_backers_phone');
@@ -16,17 +15,19 @@ var main = function() {
 var flag=0,flag_2=0,timer,timer_2;
 window.addEventListener("scroll",function(){
     if(flag==0) {
+        flag=1;
         var height_top = $(document).scrollTop();
         timer = setTimeout(function () {
             var height_top_2 = $(document).scrollTop();
-            if (height_top_2 - height_top > 50) {
+            if (height_top_2 - height_top > 0) {
                 $('.nav').removeClass('test');
-                flag=1;
+                flag=0;
             }
-            else if (height_top_2 - height_top < -50) {
+            else if (height_top_2 - height_top < 0) {
                 $('.nav').addClass('test');
+                flag=0;
             }
-        }, 10);
+        }, 100);
     }
 },false);
 
