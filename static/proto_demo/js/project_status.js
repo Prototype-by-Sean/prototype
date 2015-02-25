@@ -7,32 +7,32 @@ var main = function() {
     $('.logo').hover(function(){
         $('.logo').toggleClass('change');
     });//切換LOGE顏色
-    $('.nav').mouseenter(function(){clearTimeout(timer_2);});
-    $('.nav').mouseleave(function(){timer_2=setTimeout(function(){$('.nav').slideUp(500);},1000);});
+    $('.nav').mouseenter(function(){clearTimeout(timer_2);});//滑鼠移入ＮＡＶ取消縮回倒數
+    $('.nav').mouseleave(function(){timer_2=setTimeout(function(){$('.nav').slideUp(500);},1000);});//滑鼠移出時倒數縮回
     var height_1 = $(window).height();//取得視窗取得視窗高度
     var width_2 = $(window).width();   //視窗實際寬度
     if (width_2 < 600){
         $(width_move());
     }
-var flag=0,flag_2=0,timer,timer_2;
+var flag=0,timer,timer_2;
     var scrollTest=function(){
         if($(document).scrollTop()==0){
             $('.nav').addClass('test').slideDown(500);
-            clearTimeout(timer_2);}
-        if(flag==0) {
+            clearTimeout(timer_2);}//如果位於頁面頂端，顯示ＮＡＶ
+        if(flag==0) {//避免動作重複偵測
             var height_top = $(document).scrollTop();
             timer = setTimeout(function () {
                 var height_top_2 = $(document).scrollTop();
-                if (height_top_2 - height_top > 0 && flag==0) {
+                if (height_top_2 - height_top > 0 && flag==0) {//利用１０毫秒差距的高度偵測往上還是往下
                     flag=1;
                     $('.nav').slideUp(500);
-                    setTimeout(function(){flag=0},500);
+                    setTimeout(function(){flag=0},500);//滑動作用期間不偵測滑棒動作
                 }
                 else if (height_top_2 - height_top < 0 && flag==0) {
                     flag=1;
                     $('.nav').addClass('test').slideDown(500);
                     clearTimeout(timer_2);
-                    timer_2=setTimeout(function(){$('.nav').slideUp(500);},3000);
+                    timer_2=setTimeout(function(){$('.nav').slideUp(500);},3000);//閒置時ＮＡＶ３秒縮回
                     setTimeout(function(){flag=0},500);
                 }
             }, 10);
