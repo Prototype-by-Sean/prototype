@@ -13,23 +13,25 @@ var main = function() {
         $(width_move());
     }
 var flag=0,flag_2=0,timer,timer_2;
-window.addEventListener("scroll",function(){
-    if(flag==0) {
-        flag=1;
-        var height_top = $(document).scrollTop();
-        timer = setTimeout(function () {
-            var height_top_2 = $(document).scrollTop();
-            if (height_top_2 - height_top > 0) {
-                $('.nav').removeClass('test');
-                flag=0;
-            }
-            else if (height_top_2 - height_top < 0) {
-                $('.nav').addClass('test');
-                flag=0;
-            }
-        }, 100);
-    }
-},false);
+    var scrollTest=function(){
+        if(flag==0) {
+            var height_top = $(document).scrollTop();
+            timer = setTimeout(function () {
+                var height_top_2 = $(document).scrollTop();
+                if (height_top_2 - height_top > 0 && flag==0) {
+                    flag=1;
+                    $('.nav').slideUp(500);
+                    setTimeout(function(){flag=0},500);
+                }
+                else if (height_top_2 - height_top < 0 && flag==0) {
+                    flag=1;
+                    $('.nav').addClass('test').slideDown(500);
+                    setTimeout(function(){flag=0},500);
+                }
+            }, 100);
+        }
+    };
+window.addEventListener("scroll",scrollTest,false);
 
 
     /*25-73概念圖

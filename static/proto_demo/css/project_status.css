@@ -11,7 +11,6 @@
     border-bottom: 3px;
     border-bottom-style: solid;
     border-bottom-color: darkseagreen;
-    display: block;
 }/*標題底線*/
 .logo{
     margin: 0px ;
@@ -129,4 +128,5 @@
 }
 .test{
     position: fixed;
+    display: none;
 }
