@@ -15,17 +15,18 @@ var main = function() {
     }
 var flag=0,flag_2=0,timer,timer_2;
 window.addEventListener("scroll",function(){
-
-    if(flag<1) {
-
-        flag=flag+1;
+    if(flag==0) {
         var height_top = $(document).scrollTop();
-        timer = setTimeout(function() {
+        timer = setTimeout(function () {
             var height_top_2 = $(document).scrollTop();
-            if(height_top_2-height_top>0){
-                alert(flag);
+            if (height_top_2 - height_top > 50) {
+                $('.nav').removeClass('test');
+                flag=1;
             }
-        },1000);
+            else if (height_top_2 - height_top < -50) {
+                $('.nav').addClass('test');
+            }
+        }, 10);
     }
 },false);
 
