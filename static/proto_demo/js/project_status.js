@@ -4,7 +4,7 @@ var width_move = function() {
     $('.status_backers_sec').addClass('status_backers_sec_phone');
 }//if判斷式的公用部分
 var main = function() {
-    var flag=0,timer,timer_2;
+    var flag=0,timer,timer_2;//nav使用變數
     $('.logo').hover(function(){
         $('.logo').toggleClass('change');
     });//切換LOGE顏色
@@ -24,34 +24,31 @@ var main = function() {
     var width_2 = $(window).width();   //視窗實際寬度
     if (width_2 < 600){
         $(width_move());
-    }
-    var scrollTest=function(){
+    }//　切換手機版本
+    var navSlide=function(){
         if($(document).scrollTop()==0){
-            $('.nav').addClass('test').slideDown(500);
+            $('.nav').addClass('navSlide').slideDown(500);
             clearTimeout(timer_2);}//如果位於頁面頂端，顯示ＮＡＶ
         if(flag==0) {//避免動作重複偵測
             var height_top = $(document).scrollTop();
             timer = setTimeout(function () {
                 var height_top_2 = $(document).scrollTop();
-                if (height_top_2 - height_top > 0) {//利用１０毫秒差距的高度偵測往上還是往下
+                if (height_top_2 - height_top > 0) {
                     flag=1;
                     $('.nav').slideUp(500);
                     setTimeout(function(){flag=0},500);//滑動作用期間不偵測滑棒動作
                 }
                 else if (height_top_2 - height_top < 0) {
                     flag=1;
-                    $('.nav').addClass('test').slideDown(500);
+                    $('.nav').addClass('navSlide').slideDown(500);
                     clearTimeout(timer_2);
                     timer_2=setTimeout(function(){$('.nav').slideUp(500);},3000);//閒置時ＮＡＶ３秒縮回
                     setTimeout(function(){flag=0},500);
-                }
-            }, 10);
+                }//滑鼠往上
+            }, 10);//利用１０毫秒差距的高度偵測往上還是往下
         }
-    };
-
-window.addEventListener("scroll",scrollTest,false);
-
-
+    };//nav滑動功能
+window.addEventListener("scroll",navSlide,false);//監聽滑棒
     /*25-73概念圖
      if滾輪向上{
      if(現在離頁頂超過20%){
@@ -70,6 +67,14 @@ window.addEventListener("scroll",scrollTest,false);
      }
      else if滾輪往下{}
      */
+
+    //test
+    $('.testBtn').click(function(){
+        $('.input').show();
+    });
+
+
+    //test
 };
 $(document).ready(main);
 $(window).resize(function () {

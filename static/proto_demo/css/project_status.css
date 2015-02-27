@@ -124,9 +124,33 @@
     margin-left: 0px;
 }
 .Back_This_Project{
-    padding-bottom: 1000px;
+    padding-bottom: 100px;
 }
-.test{
+.navSlide{
+    position: fixed;
+    display: none;
+}/*nav滑動*/
+
+.weekArea{
+    height: 200px;
+    width: 100%;
+}
+.weekNav{
+    height: 30px;
+}
+
+
+.testBtn{
+    height: 30px;
+    width: 70px;
+    background-color: #009F00;
+}
+.input{
+    width: 200px;
+    height: 100px;
+    padding: 20px;
+    margin: 50px 45%;
+    background-color: #DA8028;
     position: fixed;
     display: none;
 }
