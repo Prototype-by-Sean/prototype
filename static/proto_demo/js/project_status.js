@@ -70,9 +70,18 @@ var test=function(){
     $('.testBtn').click(function(){
         $('.input').show();
     });
-    var toDay=new Date();
     var testText=document.getElementById("test");
-    testText.textContent=toDay;
+    testText.textContent=ToDay(2015,1,1);
+
+    function ToDay(year,month,day){
+        var toDay_1 = new Date(year,month-1,day);
+        var day_1=day;
+        for (i=0;toDay_1.getDay() != 1;i++){
+            var i_2=i*24;
+            toDay_1.setHours(day-i_2);
+        }
+        return toDay_1
+    }
 }//測試區
 
 $(document).ready(main);
