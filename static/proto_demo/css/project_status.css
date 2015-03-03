@@ -145,6 +145,9 @@
     width: 70px;
     background-color: #009F00;
 }
+.closeBtn{
+    background-color: #05B2D2;
+}
 .input{
     width: 200px;
     height: 100px;

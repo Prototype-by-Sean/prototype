@@ -30,13 +30,11 @@ var navSlideEvent = function(){
     });//切換LOGE顏色
     $('.nav').mouseenter(function(){
         clearTimeout(timer_2);
-        flag=1;
     });//滑鼠移入ＮＡＶ取消縮回倒數
     $('.nav').mouseleave(function() {
         if ($(document).scrollTop() > 0) {//避免在頂端時縮回
             timer_2 = setTimeout(function () {
                 $('.nav').slideUp(500);
-                setTimeout(function(){flag=0},500);
             }, 1000);
         }
     });//滑鼠移出時倒數縮回
@@ -70,18 +68,20 @@ var test=function(){
     $('.testBtn').click(function(){
         $('.input').show();
     });
+    $('.closeBtn').click(function(){
+        $('.input').hide();
+    });
+    var DateIn=new Date();
     var testText=document.getElementById("test");
-    testText.textContent=ToDay(2015,1,1);
-
+    testText.textContent=ToDay(DateIn.getFullYear(),DateIn.getMonth(),DateIn.getDate());
     function ToDay(year,month,day){
-        var toDay_1 = new Date(year,month-1,day);
-        var day_1=day;
-        for (i=0;toDay_1.getDay() != 1;i++){
-            var i_2=i*24;
-            toDay_1.setHours(day-i_2);
+        var toDay_1 = new Date(year,month,day);//將日期存入變數
+        for (i=0;toDay_1.getDay() != 1;i++){//運算到找到禮拜一為止
+            var i_2=i*24;//一天24小時
+            toDay_1.setHours(day-i_2);//迴圈每跑一次就減去一天
         }
         return toDay_1
-    }
+    }//輸入日期會找出當周星期一的日期，手輸月分會加一個月，系統用陣列記錄月份
 }//測試區
 
 $(document).ready(main);
@@ -89,4 +89,4 @@ $(document).ready(navSlideEvent);
 $(document).ready(test);
 
 
-//BUGS  1.滑鼠一開始太上面時，無法鎖定nav　　２.滑鼠鎖定nav，離開時繼續往上滾，會先縮回一次再出現。
+//BUGS  1.滑鼠一開始太上面時，無法鎖定nav　
