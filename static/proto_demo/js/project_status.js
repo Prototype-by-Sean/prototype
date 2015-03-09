@@ -86,9 +86,21 @@ var test=function(){
     }//輸入日期會找出當周星期一的日期，手輸月分會加一個月，系統用陣列記錄月份
 }//測試區
 
+var timeForm = function(){
+    var date = new Date();
+    var toDay = date.getDate();
+    var TimeId =date.getDate();
+    $("#fir").prepend('<div id="'+TimeId+'">'+TimeId+'</div>');
+    var TimeId_2=TimeId-1;
+    $("#thd").prepend('<div id="'+TimeId_2+'">'+TimeId_2+'</div>');
+    var TimeId_3=TimeId-2;;
+    $("#thr").prepend('<div id="'+TimeId_3+'">'+TimeId_3+'</div>');
+}
+
 $(document).ready(main);
 $(document).ready(navSlideEvent);
 $(document).ready(test);
+$(document).ready(timeForm);
 
 
 //BUGS  1.滑鼠一開始太上面時，無法鎖定nav　
