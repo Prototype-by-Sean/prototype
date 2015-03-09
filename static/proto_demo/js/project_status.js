@@ -28,11 +28,13 @@ var navSlideEvent = function(){
     $('.logo').hover(function(){
         $('.logo').toggleClass('change');
     });//切換LOGE顏色
-    $('.nav').mouseenter(function(){
+    $('.navDe').mouseenter(function(){
         clearTimeout(timer_2);
+        flag=1;
     });//滑鼠移入ＮＡＶ取消縮回倒數
-    $('.nav').mouseleave(function() {
+    $('.navDe').mouseleave(function() {
         if ($(document).scrollTop() > 0) {//避免在頂端時縮回
+            flag=0;
             timer_2 = setTimeout(function () {
                 $('.nav').slideUp(500);
             }, 1000);
