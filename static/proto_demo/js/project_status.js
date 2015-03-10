@@ -66,10 +66,6 @@ var navSlideEvent = function(){
         }
     };//nav滑動功能
     window.addEventListener("scroll",navSlide,false);//監聽滑棒
-    window.addEventListener("DOMMouseScroll	",XXX,false);
-    var XXX = function(){
-        if(XXX.deltaY()>0){alert("123")}
-    }
 }//nac滑動功能
 
 var test=function(){
