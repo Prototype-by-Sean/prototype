@@ -42,8 +42,10 @@ var navSlideEvent = function(){
     });//滑鼠移出時倒數縮回
     var navSlide = function(){
         if($(document).scrollTop()==0){
+            clearTimeout(timer_2);
             $('.nav').addClass('navSlide').slideDown(500);
-            clearTimeout(timer_2);}//如果位於頁面頂端，顯示ＮＡＶ
+            setTimeout(function(){flag=0},500);
+        }//如果位於頁面頂端，顯示ＮＡＶ
         if(flag==0) {//避免動作重複偵測
             var height_top = $(document).scrollTop();
             timer = setTimeout(function () {
@@ -87,11 +89,19 @@ var test=function(){
 }//測試區
 
 var timeForm = function(){
-    var date = new Date();
-    var toDay = date.getDate();
-    var TimeId =date.getDate();
-    $("#fir").prepend('<div id="'+TimeId+'">'+TimeId+'</div>');
-    var TimeId_2=TimeId-1;
+    function MonDay(year,month,day){
+        var toDay_1 = new Date(year,month,day);//將日期存入變數
+        for (i=0;toDay_1.getDay() != 1;i++){//運算到找到禮拜一為止
+            var i_2=i*24;//一天24小時
+            toDay_1.setHours(day-i_2);//迴圈每跑一次就減去一天
+        }
+        return toDay_1
+    }//輸入日期會找出當周星期一的日期，手輸月分會加一個月，系統用陣列記錄月份
+    var DateIn = new Date();
+    var toDay = MonDay(DateIn.getFullYear(),DateIn.getMonth(),DateIn.getDate());
+    var TimeId =toDay.getDate();
+    $("#fir").prepend('<div id="'+toDay.getMonth()+"M"+toDay.getDate()+"D"+'">'+toDay.getMonth()+"M"+toDay.getDate()+"D"+'</div>');
+    var TimeId_2=toDay.setHours(toDay.getData()-24);
     $("#thd").prepend('<div id="'+TimeId_2+'">'+TimeId_2+'</div>');
     var TimeId_3=TimeId-2;;
     $("#thr").prepend('<div id="'+TimeId_3+'">'+TimeId_3+'</div>');
