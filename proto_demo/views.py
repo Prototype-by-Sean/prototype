@@ -31,7 +31,8 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
-        messages.info(self.request, 'This is a demo of a message.')
+#        messages.info(self.request, 'This is a demo of a message.')
+        #relode 首頁會出現的訊息，但是一直出現在admin頁面
         return context
 
 
@@ -190,6 +191,7 @@ def user_login(request):
 
 
 @login_required
+#這個view只是測試用的
 def MakerProfileView(request,pk):
         maker = get_object_or_404(Maker,pk = pk)
         return render(request, 'proto_demo/makers/maker_profile.html',{'maker':maker})

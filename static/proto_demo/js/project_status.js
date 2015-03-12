@@ -62,7 +62,7 @@ var navSlideEvent = function(){
                     clearTimeout(timer_2);//如過滑鼠繼續往上，停止縮回計時
                     timer_2=setTimeout(function(){$('.nav').slideUp(500);},3000);//閒置時ＮＡＶ３秒縮回
                 }//滑鼠往上
-            }, 10);
+            }, 2000);
         }
     };//nav滑動功能
     window.addEventListener("scroll",navSlide,false);//監聽滑棒
@@ -106,11 +106,11 @@ var timeForm = function(){
     var TimeId_3=TimeId-2;;
     $("#thr").prepend('<div id="'+TimeId_3+'">'+TimeId_3+'</div>');
 }
-
+window.addEventListener( 'mousewheel' , mouseEvent , false );
 $(document).ready(main);
 $(document).ready(navSlideEvent);
-$(document).ready(test);
-$(document).ready(timeForm);
+//$(document).ready(test);
+//$(document).ready(timeForm);
 
 
 //BUGS  1.滑鼠一開始太上面時，無法鎖定nav　
