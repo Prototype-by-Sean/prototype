@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django import forms
 from django.forms.formsets import BaseFormSet, formset_factory
 from bootstrap3.tests import TestForm
-from models import Project,Maker,Major,User
+from models import Project,Maker,Major,User,MakerBlog,MakerBlogArticle
 from ckeditor.widgets import CKEditorWidget
 #from django.utils.translation import ugettext_lazy as _
 
@@ -114,6 +114,11 @@ class StartProjectForm(forms.ModelForm):
             'project_request_major':'需求領域',
             'project_detail':'項目細節'
         }
+
+class MakerBlogForm(forms.ModelForm):
+    class Meta:
+        model = MakerBlog
+        fields = ('blog_title','avatar','jumbotron')
 
 class LoginForm(forms.Form):
     User_Name = forms.CharField(

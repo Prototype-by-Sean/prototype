@@ -273,6 +273,14 @@ def ProjectStatusView(request,pk):
 
 @login_required
 def MakerBlogView(request,pk):
+    #blog頁面要呈現的東西
+    #1.先讀取是哪個MAKER,針對MAKER去撈DB裡面的資料,渲染在HTML上
+    #2.好像也就這樣XD 但是如果是使用者自己登入會比較複雜
+    #3.擁有者登入的話,編輯大頭,編輯jumboturn,編輯GALLERY,新增貼文
+
+
+
+
     return render(request, 'proto_demo/makers/maker_blog.html')
 
 
