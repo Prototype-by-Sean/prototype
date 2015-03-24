@@ -40,28 +40,32 @@ var navSlideEvent = function(){
             }, 1000);
         }
     });//滑鼠移出時倒數縮回
-    var height_top = 0,height_top_2;
+    var height_top = $(document).scrollTop(),height_top_2;
     var navSlide = function(){
         if($(document).scrollTop()==0){
             clearTimeout(timer_2);
             $('.nav').addClass('navSlide').slideDown(500);
             setTimeout(function(){flag=0},500);
         }//如果位於頁面頂端，顯示ＮＡＶ
-        if(flag==0) {//避免動作重複偵測
+        if(flag==0 || flag==1) {//避免動作重複偵測
             height_top_2 = $(document).scrollTop();
-            setTimeout(function(){height_top = $(document).scrollTop()},10)
-            //alert(height_top_2 - height_top);
             if (height_top_2 - height_top > 0) {//往下，利用１０毫秒差距的高度偵測往上還是往下
-                    flag=1;
+                    flag=2;
                     $('.nav').slideUp(500);//往上縮回
-                    setTimeout(function(){flag=0},500);//滑動作用期間不偵測滑棒動作
+                    setTimeout(function(){
+                        flag=0;
+                        height_top = $(document).scrollTop();
+                    },500);//滑動作用期間不偵測滑棒動作
                 }
-                else if (height_top_2 - height_top < 0) {
+                else if (height_top_2 - height_top < 0 && flag==0) {
                     flag=1;
                     $('.nav').addClass('navSlide').slideDown(500);
-                    setTimeout(function(){flag=0},500);
+                    setTimeout(function(){flag=0
+                        height_top = $(document).scrollTop();
+                    },500);
                     clearTimeout(timer_2);//如過滑鼠繼續往上，停止縮回計時
-                    timer_2=setTimeout(function(){$('.nav').slideUp(500);},3000);//閒置時ＮＡＶ３秒縮回
+                    timer_2=setTimeout(function(){$('.nav').slideUp(500);
+                    },3000);//閒置時ＮＡＶ３秒縮回
                 }//滑鼠往上
             };
         }
