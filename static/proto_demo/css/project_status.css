@@ -140,7 +140,7 @@
     height: 30px;
 }
 
-
+/*測試區*/
 .testBtn{
     height: 30px;
     width: 70px;
@@ -159,14 +159,24 @@
     display: none;
 }
 
+
+/*時間區*/
 .timeTable{
     width: 70%;
     margin: 0px auto;
 }
-.btn_2{background-color: #05B2D2}
+.btn_2{
+    background-color: #05B2D2
+}
 .mon{
     background-color: #05B2D2;
     border-color: #009F00;
     float:left;
     border-style: solid;
+}
+.page{
+    background-color: #0066cc;
+    border-color: #000033;
+    border-style: solid;
+    float:left;
 }
