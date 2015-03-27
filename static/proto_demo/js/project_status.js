@@ -103,15 +103,31 @@ $(document).ready(function(){
         alert(today_2);
         return today_2
     }
-
     for(var i_3=0;i_3<7;i_3++){
         var vDay =new Date(MonDay().setHours(MonDay().getHours()+i_3*24));
         $("#day"+i_3).prepend('<div id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</div>');
     };
-
+    var cDate=0;
     $("#pgUp").click(function(){
-        var tt = "pgUp";
-        $("#"+tt).addClass("ttt");
+        cDate=cDate-1;
+        for(var i_3=0;i_3<7;i_3++) {
+            document.getElementById('day' + i_3).innerHTML = "";
+        }
+        for(var i_3=0;i_3<7;i_3++) {
+            var vDay=new Date(MonDay().setHours(MonDay().getHours()+i_3*24+cDate*24*7));
+            $("#day"+i_3).prepend('<div id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</div>');
+        }
+    });
+
+    $("#pgDn").click(function(){
+        cDate=cDate+1;
+        for(var i_3=0;i_3<7;i_3++) {
+            document.getElementById('day' + i_3).innerHTML = "";
+        }
+        for(var i_3=0;i_3<7;i_3++) {
+            var vDay=new Date(MonDay().setHours(MonDay().getHours()+i_3*24+cDate*24*7));
+            $("#day"+i_3).prepend('<div id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</div>');
+        }
     });
 
 
