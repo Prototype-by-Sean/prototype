@@ -31,7 +31,7 @@ $(document).ready( function() {
     if (width_2 < 600){
         $(widthChange());
     }//　切換手機版本
-});
+});//主程式
 $(document).ready(function(){
     var flag=0,timer,timer_2;//nav使用變數
     $('.logo').hover(function(){
@@ -79,7 +79,7 @@ $(document).ready(function(){
         };
     }
     window.addEventListener("scroll",navSlide,false);//監聽滑棒
-});
+});//滑動功能
 $(document).ready(function(){
     $('.btn_2').click(function(){
         $('.input').show();
@@ -87,7 +87,7 @@ $(document).ready(function(){
     $('.closeBtn').click(function(){
         $('.input').hide();
     });
-});
+});//測試
 
 $(document).ready(function(){
     function MonDay(){
@@ -103,14 +103,18 @@ $(document).ready(function(){
         alert(today_2);
         return today_2
     }
-    //var toDay = MonDay(DateIn.getFullYear(),DateIn.getMonth(),DateIn.getDate());
-    //var TimeId =toDay.getDate();
 
-    $("#fir").prepend('<div id="'+MonDay().getMonth()+"M"+MonDay().getDate()+"D"+'">'+MonDay().getMonth()+"M"+MonDay().getDate()+"D"+'</div>');
-    var thdDay =new Date(MonDay().setHours(MonDay().getHours()+24));
-    $("#thd").prepend('<div id="'+thdDay.getMonth()+"M"+thdDay.getDate()+"D"+'">'+thdDay.getMonth()+"M"+thdDay.getDate()+"D"+'</div>');
-    var thrDay =new Date(MonDay().setHours(MonDay().getHours()+48));
-    $("#thr").prepend('<div id="'+thrDay.getMonth()+"M"+thrDay.getDate()+"D"+'">'+thrDay.getMonth()+"M"+thrDay.getDate()+"D"+'</div>');
-});
+    for(var i_3=0;i_3<7;i_3++){
+        var vDay =new Date(MonDay().setHours(MonDay().getHours()+i_3*24));
+        $("#day"+i_3).prepend('<div id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</div>');
+    };
+
+    $("#pgUp").click(function(){
+        var tt = "pgUp";
+        $("#"+tt).addClass("ttt");
+    });
+
+
+});//日期表
 
 

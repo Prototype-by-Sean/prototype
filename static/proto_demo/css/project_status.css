@@ -173,10 +173,14 @@
     border-color: #009F00;
     float:left;
     border-style: solid;
+
 }
-.page{
-    background-color: #0066cc;
+.page {
     border-color: #000033;
     border-style: solid;
-    float:left;
+    float: left;
+}
+
+.ttt{
+    background-color: #009F00;
 }
