@@ -87,6 +87,10 @@ $(document).ready(function(){
     $('.closeBtn').click(function(){
         $('.input').hide();
     });
+    $("#monday").click(function(){
+        $("#monday").remove();
+        $(".monday_2").show();
+    });
 });//測試
 
 $(document).ready(function(){
@@ -161,4 +165,4 @@ $(document).ready(function(){
 
 });//日期表
 
-
+//000
