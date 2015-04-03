@@ -97,16 +97,44 @@ $(document).ready(function(){
             toDay_1.setHours(toDay_1.getHours()-24);//迴圈每跑一次就減去一天
         }
         return toDay_1
-    }//輸入日期會找出當周星期一的日期，手輸月分會加一個月，系統用陣列記錄月份
+    }//找出當周星期一的日期，手輸月分會加一個月，因為系統用陣列記錄月份
+    function firstDay(){
+        var toDay_2 = new Date();
+        var toDay_3 = new Date();
+        for(var i=1;toDay_2.getMonth()==toDay_3.getMonth();i++){
+            toDay_2.setHours(toDay_2.getHours()-24);
+        }
+        toDay_2.setHours(toDay_2.getHours()+24);
+        return toDay_2
+    }//找出當月第一天
+    function lestDat(){
+        var toDay_2 = new Date();
+        var toDay_3 = new Date();
+        for(var i=1;toDay_2.getMonth()==toDay_3.getMonth();i++){
+            toDay_2.setHours(toDay_2.getHours()+24);
+        }
+        toDay_2.setHours(toDay_2.getHours()-24);
+        return toDay_2
+    }//找出當月最後一日
     function yesterday(today,no){
         var today_2 = today.setHours(today.getHours()-no*24);
         alert(today_2);
         return today_2
     }
-    for(var i_3=0;i_3<7;i_3++){
-        var vDay =new Date(MonDay().setHours(MonDay().getHours()+i_3*24));
+    for(var i=0;i<=30;i++){
+        var vDay =new Date(firstDay().setHours(firstDay().getHours()+i*24));
+        $("#month").append('<div class=mon id="'+"Day"+i+'"></div>');
+        $("#month").on('ready','#day1',
+            function(){
+            alert("12");
+            $("#day"+i).prepend('<div id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</div>');
+        }
+        );
+    }
+    setTimeout(function(){for(var i_3=0;i_3<=30;i_3++){
+        var vDay =new Date(firstDay().setHours(firstDay().getHours()+i_3*24));
         $("#day"+i_3).prepend('<div id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</div>');
-    };
+    };},100);
     var cDate=0;
     $("#pgUp").click(function(){
         cDate=cDate-1;
