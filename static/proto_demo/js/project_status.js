@@ -125,7 +125,6 @@ $(document).ready(function(){
         alert(today_2);
         return today_2
     }
-    var thisMonth = lestDat().getDate();
     for(var i=0;i<=lestDat().getDate()-firstDay().getDate();i++){
         var vDay =new Date(firstDay().setHours(firstDay().getHours()+24));
         $("#month").append('<div class=mon id="'+"day"+i+'"></div>');
@@ -136,10 +135,10 @@ $(document).ready(function(){
         }
         );
     }
-    setTimeout(function(){for(var i_3=0;i_3<=30;i_3++){
+    for(var i_3=0;i_3<=30;i_3++){
         var vDay =new Date(firstDay().setHours(firstDay().getHours()+i_3*24));
         $("#day"+i_3).prepend('<div id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</div>');
-    };},100);
+    };
     var cDate=0;
     $("#pgUp").click(function(){
         cDate=cDate-1;
