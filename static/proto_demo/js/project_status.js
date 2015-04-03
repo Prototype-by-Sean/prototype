@@ -126,8 +126,8 @@ $(document).ready(function(){
         return today_2
     }
     for(var i=0;i<=30;i++){
-        var vDay =new Date(firstDay().setHours(firstDay().getHours()+i*24));
-        $("#month").append('<div class=mon id="'+"Day"+i+'"></div>');
+        var vDay =new Date(firstDay().setHours(firstDay().getHours()+24));
+        $("#month").append('<div class=mon id="'+"day"+i+'"></div>');
         $("#month").on('ready','#day1',
             function(){
             alert("12");
