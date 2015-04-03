@@ -162,8 +162,10 @@
 
 /*時間區*/
 .timeTable{
-    width: 70%;
+    width: 80%;
     margin: 0px auto;
+    overflow:auto;
+    height: 50px;
 }
 .btn_2{
     background-color: #05B2D2
@@ -171,10 +173,11 @@
 .mon{
     background-color: #05B2D2;
     border-color: #009F00;
-    float:left;
     border-style: solid;
-    height: 50px;
-    width: 100px;
+    float: left;
+    height: 30px;
+    width: 13.34%;
+    position: static;
 }
 .page {
     border-color: #000033;

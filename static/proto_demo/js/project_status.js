@@ -126,19 +126,11 @@ $(document).ready(function(){
         return today_2
     }
     for(var i=0;i<=lestDat().getDate()-firstDay().getDate();i++){
-        var vDay =new Date(firstDay().setHours(firstDay().getHours()+24));
+        var vDay =new Date(firstDay().setHours(firstDay().getHours()+i*24));
         $("#month").append('<div class=mon id="'+"day"+i+'"></div>');
-        $("#month").on('ready','#day1',
-            function(){
-            alert("12");
-            $("#day"+i).prepend('<div id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</div>');
-        }
-        );
+        $("#day"+i).prepend('<div id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</div>');
     }
-    for(var i_3=0;i_3<=30;i_3++){
-        var vDay =new Date(firstDay().setHours(firstDay().getHours()+i_3*24));
-        $("#day"+i_3).prepend('<div id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</div>');
-    };
+
     var cDate=0;
     $("#pgUp").click(function(){
         cDate=cDate-1;
