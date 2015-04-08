@@ -128,7 +128,7 @@ $(document).ready(function(){
     for(var i=0;i<=lestDat().getDate()-firstDay().getDate();i++){
         var vDay =new Date(firstDay().setHours(firstDay().getHours()+i*24));
         $("#month").append('<div class=mon id="'+"day"+i+'"></div>');
-        $("#day"+i).prepend('<div id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</div>');
+        $("#day"+i).prepend('<p id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</p>');
     }
 
     var cDate=0;
@@ -153,7 +153,6 @@ $(document).ready(function(){
             $("#day"+i_3).prepend('<div id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</div>');
         }
     });
-
 
 });//日期表
 

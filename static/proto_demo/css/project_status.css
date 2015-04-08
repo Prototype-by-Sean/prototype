@@ -162,10 +162,10 @@
 
 /*時間區*/
 .timeTable{
-    width: 80%;
-    margin: 0px auto;
+    margin: 0 auto;
+    width: 95%;
     overflow:auto;
-    height: 50px;
+    height: 100px;
 }
 .btn_2{
     background-color: #05B2D2
@@ -174,10 +174,9 @@
     background-color: #05B2D2;
     border-color: #009F00;
     border-style: solid;
-    float: left;
     height: 30px;
-    width: 13.34%;
-    position: static;
+    width: 100px;
+    float: left;
 }
 .page {
     border-color: #000033;
@@ -191,4 +190,8 @@
 .monday_2{
     height: 100%;
     display: none;
+}
+
+#month{
+width: 4000px;
 }
