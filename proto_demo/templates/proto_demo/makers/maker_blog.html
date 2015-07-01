@@ -1,6 +1,6 @@
 {% extends 'proto_demo/bootstrap.html' %}
 {% load staticfiles %}
-{% load url from future %}
+{# load url from future #}
 {% load bootstrap3 %}
 
 {% block bootstrap3_extra_head %}
@@ -10,7 +10,7 @@
     <link href="/static/proto_demo/css/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link href="/static/proto_demo/css/makerblog.css" rel="stylesheet" >
-    <script src="/static/proto_demo/js/main.js"></script>
+    <script src="/static/proto_demo/js/maker_blog.js"></script>
 
 {% endblock %}
 
@@ -219,6 +219,22 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
     </div>
-    {% endblock %}
 
+        <div class="container">
+        <P>maker : {{ maker }}</P>
+        request.user: {{ request.user }}
+        </div>
+        <br>
+        {{ form.media }}
+        <form method="post" class="form-horizontal" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form layout="horizontal"%}
+        {% buttons layout='horizontal'%}
+        <button type="submit" class="btn btn-primary">
+            Submit
+        </button>
+        {% endbuttons %}
+        </form>
+
+    {% endblock %}
 {% endblock %}

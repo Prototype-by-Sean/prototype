@@ -118,7 +118,13 @@ class StartProjectForm(forms.ModelForm):
 class MakerBlogForm(forms.ModelForm):
     class Meta:
         model = MakerBlog
-        fields = ('blog_title','avatar','jumbotron')
+        fields = ('blog_title',)
+
+class AjaxTestForm(forms.Form):
+    text1 = forms.CharField()
+    text2 = forms.CharField()
+    text3 = forms.CharField()
+
 
 class LoginForm(forms.Form):
     User_Name = forms.CharField(

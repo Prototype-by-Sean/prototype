@@ -9,12 +9,16 @@ from django.views.generic.base import TemplateView
 from django.contrib import messages
 from django.views.generic import DetailView,ListView
 from django.utils.timezone import datetime
-from models import Project,Maker,Major,User
+from models import Project,Maker,Major,User,MakerBlog
 from forms import ContactForm, FilesForm, ContactFormSet,StartProjectForm,NewMakerForm,\
-    MakerProfileForm,LoginForm
+    MakerProfileForm,LoginForm,MakerBlogForm,AjaxTestForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
+
+from django.views.generic.detail import BaseDetailView, \
+    SingleObjectTemplateResponseMixin
+import json
 # http://yuji.wordpress.com/2013/01/30/django-form-field-in-initial-data-requires-a-fieldfile-instance/
 # test organization dk
 
@@ -190,11 +194,6 @@ def user_login(request):
         return render(request, 'proto_demo/home/login.html', {'login_form':LoginForm,'next': request.GET.get('next','')})
 
 
-@login_required
-#這個view只是測試用的
-def MakerProfileView(request,pk):
-        maker = get_object_or_404(Maker,pk = pk)
-        return render(request, 'proto_demo/makers/maker_profile.html',{'maker':maker})
 
 
 @login_required
@@ -270,6 +269,11 @@ def ProjectStatusView(request,pk):
                                                              })
 
 
+@login_required
+#這個view只是測試用的
+def MakerProfileView(request,pk):
+        maker = get_object_or_404(Maker,pk = pk)
+        return render(request, 'proto_demo/makers/maker_profile.html',{'maker':maker})
 
 @login_required
 def MakerBlogView(request,pk):
@@ -278,12 +282,63 @@ def MakerBlogView(request,pk):
     #1.1 可以藉由登入訊息知道是哪個USER 但是要自動產生對應的 MakerBlog
     #2.  好像也就這樣XD 但是如果是使用者自己登入會比較複雜
     #3.  擁有者登入的話,編輯大頭,編輯jumboturn,編輯GALLERY,新增貼文
-    maker = get_object_or_404(Maker,pk=pk)
+    maker = get_object_or_404(Maker,pk = pk)
+    form = MakerBlogForm(request.POST,request.FILES)
+
+    return render(request, 'proto_demo/makers/maker_blog.html',
+                    {   'maker':maker,
+                        'form':form,
+                })
+
+#---------------------ajax學習中-------------------------------------------
+#issues
+#1 render指定位置不會用
+#題外話 CBV 到底怎用 叫出來 填參數 結束?
+
+class JSONResponseMixin(object):
+    def render_to_response(self, context):
+        return self.get_json_response(self.convert_context_to_json(context))
+    def get_json_response(self, content, **httpresponse_kwargs):
+        return HttpResponse(content, content_type='application/json', **httpresponse_kwargs)
+    def convert_context_to_json(self, context):
+        return json.dumps(context)
+
+#客戶端收到url需求之後，而且設定model為person，傳到這個view，先把model裡面的東西轉成json等使用者點擊??
+class HybridDetailView(JSONResponseMixin, SingleObjectTemplateResponseMixin, BaseDetailView):
+    def render_to_response(self, context):
+        if self.request.is_ajax():
+            obj = context['object'].as_dict()
+            return JSONResponseMixin.render_to_response(self, obj)
+        else:
+            return SingleObjectTemplateResponseMixin.render_to_response(self, context)
 
 
+class AjaxableResponseMixin(object):
+    """
+    Mixin to add AJAX support to a form.
+    Must be used with an object-based FormView (e.g. CreateView)
+    """
+    def form_invalid(self, form):
+        response = super(AjaxableResponseMixin, self).form_invalid(form)
+        if self.request.is_ajax():
+            return JsonResponse(form.errors, status=400)
+        else:
+            return response
 
-    return render(request, 'proto_demo/makers/maker_blog.html')
+    def form_valid(self, form):
+        # We make sure to call the parent's form_valid() method because
+        # it might do some processing (in the case of CreateView, it will
+        # call form.save() for example).
+        response = super(AjaxableResponseMixin, self).form_valid(form)
+        if self.request.is_ajax():
+            data = {
+                'pk': self.object.pk,
+            }
+            return JsonResponse(data)
+        else:
+            return response
 
+#---------------------ajax學習中-------------------------------------------
 
 def Match(object):
     pass

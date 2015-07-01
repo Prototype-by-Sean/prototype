@@ -66,15 +66,15 @@ class MakerBlog(models.Model):
     blog_title = models.CharField(max_length=200)   #要不要直接做成Maker的ID就好呢
     maker = models.OneToOneField(Maker)             #一個Maker一個BLOG
     avatar = models.ImageField(blank=True)
-    projects = models.ManyToManyField(Project)
+    projects = models.ManyToManyField(Project)      #至少一個項目才能有Blog ?
     jumbotron = models.ImageField(blank=True)
     # 先記下來 應該還要有個gallery 是用來放作品集或projects 之後可能用form的格式呈現 才不用多存一次同樣的圖片
     # Gallery 典籍之後要連結到對應的  MakerBlogArticle 或 Project
     def __unicode__(self):
         return self.blog_title
 
-class MakerBlogArticle(models.Model):   #要不要讓作品集跟部落格文章互通？！這邊部落格真的有使用率嗎？先互通好了～
-    Title = models.CharField(max_length=200)    #文章標題
+class MakerBlogArticle(models.Model):               #要不要讓作品集跟部落格文章互通？！這邊部落格真的有使用率嗎？先互通好了...
+    Title = models.CharField(max_length=200)        #文章標題
     blog = models.ForeignKey(MakerBlog)
     article = RichTextField(config_name='detail')   #文章內容,導入所見即所得編輯器
     tags = models.CharField(max_length=500)         #就是TAG 先放著吧
@@ -90,3 +90,11 @@ class Schedule(models.Model):
     project = models.OneToOneField(Project,blank=True)
 
 
+#-------------------------測試AJAX----------------------
+class Person(models.Model):
+    name = models.CharField(max_length=80)
+    birthday = models.DateField()
+    def __unicode__(self):
+        return u"%s was born in %s" % (self.name, self.birthday.strftime("%B of %Y"))
+    def as_dict(self):
+        return {'name':self.name, 'birthday':self.birthday.strftime("%B of %Y")}

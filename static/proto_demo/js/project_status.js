@@ -32,6 +32,8 @@ $(document).ready( function() {
         $(widthChange());
     }//　切換手機版本
 });//主程式
+
+<!--navbar功能開始-->
 $(document).ready(function(){
     var flag=0,timer,timer_2;//nav使用變數
     $('.logo').hover(function(){
@@ -40,7 +42,7 @@ $(document).ready(function(){
     $('.nav').mouseenter(function(){
         clearTimeout(timer_2);
         flag=1;
-    });//滑鼠移入ＮＡＶ取消縮回倒數
+    });//滑鼠移入NAV取消縮回倒數
     $('.nav').mouseleave(function() {
         if ($(document).scrollTop() > 0) {//避免在頂端時縮回
             flag=0;
@@ -49,37 +51,42 @@ $(document).ready(function(){
             }, 1000);
         }
     });//滑鼠移出時倒數縮回
+
     var height_top = $(document).scrollTop(),height_top_2;
     var navSlide = function(){
-        if($(document).scrollTop()==0){
-            clearTimeout(timer_2);
-            $('.nav').addClass('navSlide').slideDown(500);
-            setTimeout(function(){flag=0},500);
-        }//如果位於頁面頂端，顯示ＮＡＶ
-        if(flag==0 || flag==1) {//避免動作重複偵測
-            height_top_2 = $(document).scrollTop();
-            if (height_top_2 - height_top > 0) {//往下，利用１０毫秒差距的高度偵測往上還是往下
-                flag=2;
-                $('.nav').slideUp(200);//往上縮回
-                setTimeout(function(){
-                    flag=0;
-                    height_top = $(document).scrollTop();
-                },200);//滑動作用期間不偵測滑棒動作
-            }
-            else if (height_top_2 - height_top < 0 && flag==0) {
-                flag=1;
-                $('.nav').addClass('navSlide').slideDown(200);
-                setTimeout(function(){flag=0
-                    height_top = $(document).scrollTop();
-                },200);
-                clearTimeout(timer_2);//如過滑鼠繼續往上，停止縮回計時
-                timer_2=setTimeout(function(){$('.nav').slideUp(200);
-                },3000);//閒置時ＮＡＶ３秒縮回
-            }//滑鼠往上
-        };
-    }
-    window.addEventListener("scroll",navSlide,false);//監聽滑棒
+                        if($(document).scrollTop()==0){
+                            clearTimeout(timer_2);
+                            $('.nav').addClass('navSlide').slideDown(500);
+                            setTimeout(function(){flag=0},500);
+                        }//如果位於頁面頂端，顯示NAV
+                        if(flag==0 || flag==1) {//避免動作重複偵測
+                            height_top_2 = $(document).scrollTop();
+                        if (height_top_2 - height_top > 0) {//往下，利用10毫秒差距的高度偵測往上還是往下
+                            flag=2;
+                            $('.nav').slideUp(200);//往上縮回
+                            setTimeout(function(){
+                                flag=0;
+                                height_top = $(document).scrollTop();
+                            },200);//滑動作用期間不偵測滑棒動作
+                        }
+                        else if (height_top_2 - height_top < 0 && flag==0) {
+                            flag=1;
+                            $('.nav').addClass('navSlide').slideDown(200);
+                            setTimeout(function(){
+                                flag=0;
+                                height_top = $(document).scrollTop();
+                            },200);
+                            clearTimeout(timer_2);//如過滑鼠繼續往上，停止縮回計時
+                            timer_2=setTimeout(function(){
+                                    $('.nav').slideUp(200);
+                            },3000);//閒置時NAV３秒縮回
+                        }//滑鼠往上
+                        }
+                    };
+                    window.addEventListener("scroll",navSlide,false);//監聽滑棒
 });//滑動功能
+<!--navbar功能結束-->
+
 $(document).ready(function(){
     $('.btn_2').click(function(){
         $('.input').show();
@@ -125,12 +132,21 @@ $(document).ready(function(){
         alert(today_2);
         return today_2
     }
+    var thisMonth = lestDat().getDate();
     for(var i=0;i<=lestDat().getDate()-firstDay().getDate();i++){
-        var vDay =new Date(firstDay().setHours(firstDay().getHours()+i*24));
+        var vDay =new Date(firstDay().setHours(firstDay().getHours()+24));
         $("#month").append('<div class=mon id="'+"day"+i+'"></div>');
-        $("#day"+i).prepend('<p id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</p>');
+        $("#month").on('ready','#day1',
+            function(){
+            alert("12");
+            $("#day"+i).prepend('<div id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</div>');
+        }
+        );
     }
-
+    setTimeout(function(){for(var i_3=0;i_3<=30;i_3++){
+        var vDay =new Date(firstDay().setHours(firstDay().getHours()+i_3*24));
+        $("#day"+i_3).prepend('<div id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</div>');
+    };},100);
     var cDate=0;
     $("#pgUp").click(function(){
         cDate=cDate-1;
@@ -153,6 +169,7 @@ $(document).ready(function(){
             $("#day"+i_3).prepend('<div id="'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'">'+vDay.getMonth()+"M"+vDay.getDate()+"D"+'</div>');
         }
     });
+
 
 });//日期表
 

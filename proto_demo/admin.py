@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from models import Maker, Project, Category, Major,MakerBlog,MakerBlogArticle,Schedule
+from models import Maker, Project, Category, Major,MakerBlog,MakerBlogArticle,Schedule,Person
 # Register your models here.
 
 class MakerAdmin(admin.ModelAdmin):
@@ -36,3 +36,4 @@ admin.site.register(Major,MajorAdmin)
 admin.site.register(MakerBlog,)
 admin.site.register(MakerBlogArticle,)
 admin.site.register(Schedule)
+admin.site.register(Person)
