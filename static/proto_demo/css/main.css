@@ -9,9 +9,20 @@ body{
 }
 
 .nav{
+    z-index: 1;/*這樣在哪邊顯示都會在最上層*/
+    position: absolute;
+    top:0;
+    width: 100%;
     padding-top: 3px;
     background: linear-gradient(to left top, rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
 }
+
+.navSlide{
+    z-index: 1;/*這樣在哪邊顯示都會在最上層*/
+    position: fixed;
+    top:0;
+    display: none;
+}/*nav滑動*/
 
 .nav ul{
     margin-bottom: 0;
@@ -58,10 +69,11 @@ body{
 	        -ms-filter: blur(1px);
 	            filter: blur(1px);
 	}
-/*沒用到的物化濾鏡,先放著*/
+/*沒用到的霧化濾鏡,先放著*/
 
 .jumbotron {
     position: absolute;
+    top:43px;
     height: 400px;
     width: 100%;
     background: url('/static/proto_demo/image/hptmp.JPG') no-repeat;
@@ -70,10 +82,11 @@ body{
     z-index: -1;
 }
 
+
 #headline {
     position: relative;
-    margin-top:150px;
-    margin-bottom: 160px;
+    padding-top:150px;/*第一個相對位置物件,會影響到後面相對位置物件的堆疊*/
+    margin-bottom: 200px;/*第一個相對位置物件,會影響到後面相對位置物件的堆疊*/
 }
 
 #headline h1 {
