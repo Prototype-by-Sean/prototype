@@ -1,18 +1,17 @@
-<!--
 <head>
     <meta charset="utf-8">
-    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge" /><![endif]
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link  href="/prototype/static/proto_demo/css/project_status.css" rel="stylesheet">
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
     <script src="/prototype/static/proto_demo/js/project_status.js"></script>
 </head>
--->
+
 
 
 
 <!--以下為伺服器code-->
-
+<!--
     {% extends 'proto_demo/base.html' %}
     {% load bootstrap3 %}
     {% load staticfiles %}
@@ -28,118 +27,118 @@
     {% endblock %}
 
     {% block content %}
-
-    <body id="body">
-        <div class = "nav">
-            <p class = "logo">LOGO</p><!--LOGO-->
-            <div class="leftArea">
-                <p class = "nav_left">發現</p>
-                <p class = "nav_left">開始</p>
-            </div>
-            <form class = "nav_mid"></form>
-            <div class="rightArea">
-                <p class = "nav_right">報名</p>
-                <p class = "nav_right">登錄</p>
-            </div>
-        </div> <!--標題-->
-
-        <div class="input">
-            <form>
-                你老師:<input type="text">
-                高義你他媽:<input type="text">
-                <b class="closeBtn">關閉</b>
-            </form>
-        </div><!--註冊表功能-->
-
-        <div>
-            <p class = "navsec">我是副標1</p>
-            <p class = "navsec_sec">我是副標2</p>
-        </div><!--副標題-->
-        <div  class = "secArea">
-            <div class = 'video'>
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/sL-ul6SnKMM" ></iframe>
-            </div>
-            <div>
-                <div>
-                    <p class="status_backers">{贊助者數量}</p>
-                    <P class="status_backers_sec">個贊助者</P>
-                </div>
-                <div>
-                    <p class="status_backers">{已募金額}</p>
-                    <P class="status_backers_sec">已募金額</P>
-                </div>
-                <div>
-                    <p class="status_backers">{剩餘天數}</p>
-                    <P class="status_backers_sec">剩餘天數</P>
-                </div>
-                <p class="Back_This_Project">Back This Project</p>
-            </div>
-        </div><!--第二區域，顯示幕資進度-->
-        <div>
-            <div>
-                <b class="page" id="pgUp"><=</b>
-                <b class="page" id="pgDn">=></b>
-            </div>
-            <br>
-            <br>
-            <div class="timeTable" id="timeTable_1" left="10px">
-                <div id="month">
-                </div>
-            </div>
-        </div><!--顯示時間表-->
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-
-    <div class="container">
-        <h1>{{ project.project_name }}</h1><br>
-        <h3>項目擁有者</h3>
-        {% for user in project.project_starter.all %}   <!--把項目發起者都列出來，之後要顯示圖片-->
-        {{ user }}<br>
-        {% endfor %}<br>
-
-        <h3>封面</h3>
-        <img src="{{ project.project_cover.url }}">
-
-        <h3>細節</h3>
-        <div>
-            {{ project.project_detail|safe }}           <!--要用safe 這個filter 才不會顯示raw html-->
-        </div>
-
-        {% if request.user in project.project_starter.all%} <!--以下內容只有發起者看的見-->
-        <h3>需求領域</h3>
-        {% for major in project.project_request_major.all %}
-        {{ major }}<br>
-        {% endfor %}<br>
-
-        <h3>配對結果</h3><br>
-        {% for maker in result %}                   <!--用for帶出每個maker-->
-        <dl>
-            <dt>{{ maker }}</dt>                    <!--輸出maker名子作為清單標題-->
-            {% for m_j in maker.maker_major.all %}  <!--用第二個for"逐一帶出"當下"maker中的maker_major欄位裡面所有物件-->
-            {% if m_j in p_request_major %}     <!--如果當下的maker_majro有包含在p_request_major裡面就顯示-->
-            <dd>{{ m_j }}</dd>
-            {% else %}                      <!--如果沒有包含在p_request_major裡面就不顯示-->
-            <dd class="hidden_major">{{ m_j }}</dd>
-            {% endif %}
-            {% endfor %}<br>
-        </dl>
-        {% endfor %}<br>
-        {% endif %}
-
-        <p>日期<br>{{ project.pub_date }}<br></p>
+-->
+<body id="body">
+<div class = "nav">
+    <p class = "logo">LOGO</p><!--LOGO-->
+    <div class="leftArea">
+        <p class = "nav_left">發現</p>
+        <p class = "nav_left">開始</p>
     </div>
-    </body>
-    {% endblock %}
+    <form class = "nav_mid"></form>
+    <div class="rightArea">
+        <p class = "nav_right">報名</p>
+        <p class = "nav_right">登錄</p>
+    </div>
+</div> <!--標題-->
+
+<div class="input">
+    <form>
+        你老師:<input type="text">
+        高義你他媽:<input type="text">
+        <b class="closeBtn">關閉</b>
+    </form>
+</div><!--註冊表功能-->
+
+<div>
+    <p class = "navsec">我是副標1</p>
+    <p class = "navsec_sec">我是副標2</p>
+</div><!--副標題-->
+<div  class = "secArea">
+    <div class = 'video'>
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/sL-ul6SnKMM" ></iframe>
+    </div>
+    <div>
+        <div>
+            <p class="status_backers">{贊助者數量}</p>
+            <P class="status_backers_sec">個贊助者</P>
+        </div>
+        <div>
+            <p class="status_backers">{已募金額}</p>
+            <P class="status_backers_sec">已募金額</P>
+        </div>
+        <div>
+            <p class="status_backers">{剩餘天數}</p>
+            <P class="status_backers_sec">剩餘天數</P>
+        </div>
+        <p class="Back_This_Project">Back This Project</p>
+    </div>
+</div><!--第二區域，顯示幕資進度-->
+<div>
+    <div>
+        <b class="page" id="pgUp"><=</b>
+        <b class="page" id="pgDn">=></b>
+    </div>
+    <br>
+    <br>
+    <div class="timeTable" id="timeTable_1" left="10px">
+        <div id="month">
+        </div>
+    </div>
+</div><!--顯示時間表-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="container">
+    <h1>{{ project.project_name }}</h1><br>
+    <h3>項目擁有者</h3>
+    {% for user in project.project_starter.all %}   <!--把項目發起者都列出來，之後要顯示圖片-->
+    {{ user }}<br>
+    {% endfor %}<br>
+
+    <h3>封面</h3>
+    <img src="{{ project.project_cover.url }}">
+
+    <h3>細節</h3>
+    <div>
+        {{ project.project_detail|safe }}           <!--要用safe 這個filter 才不會顯示raw html-->
+    </div>
+
+    {% if request.user in project.project_starter.all%} <!--以下內容只有發起者看的見-->
+    <h3>需求領域</h3>
+    {% for major in project.project_request_major.all %}
+    {{ major }}<br>
+    {% endfor %}<br>
+
+    <h3>配對結果</h3><br>
+    {% for maker in result %}                   <!--用for帶出每個maker-->
+    <dl>
+        <dt>{{ maker }}</dt>                    <!--輸出maker名子作為清單標題-->
+        {% for m_j in maker.maker_major.all %}  <!--用第二個for"逐一帶出"當下"maker中的maker_major欄位裡面所有物件-->
+        {% if m_j in p_request_major %}     <!--如果當下的maker_majro有包含在p_request_major裡面就顯示-->
+        <dd>{{ m_j }}</dd>
+        {% else %}                      <!--如果沒有包含在p_request_major裡面就不顯示-->
+        <dd class="hidden_major">{{ m_j }}</dd>
+        {% endif %}
+        {% endfor %}<br>
+    </dl>
+    {% endfor %}<br>
+    {% endif %}
+
+    <p>日期<br>{{ project.pub_date }}<br></p>
+</div>
+</body>
+{% endblock %}
 
 
 

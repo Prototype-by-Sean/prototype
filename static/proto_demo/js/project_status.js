@@ -80,6 +80,13 @@ $(document).ready(function(){
                             timer_2=setTimeout(function(){
                                     $('.nav').slideUp(200);
                             },3000);//閒置時NAV３秒縮回
+                            setTimeout(function(){
+                                if ($(document).scrollTop()==0){
+                                    clearTimeout(timer_2);
+                                    $('.nav').addClass('navSlide').slideDown(500);
+                                    setTimeout(function(){flag=0},500);
+                                }
+                            },200);
                         }//滑鼠往上
                         }
                     };

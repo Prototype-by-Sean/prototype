@@ -163,9 +163,9 @@
 /*時間區*/
 .timeTable{
     margin: 0 auto;
-    width: 95%;
+    width: 742px;
     overflow:auto;
-    height: 100px;
+    height: 80px;
 }
 .btn_2{
     background-color: #05B2D2
