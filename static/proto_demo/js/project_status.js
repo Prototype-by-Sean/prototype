@@ -46,11 +46,6 @@ $(document).ready(function(){
     var height_top = $(document).scrollTop()                    //用來儲存滾動時的開始位置
     var height_top_2 = 0;                                       //同上,結束位置
     var navSlide = function(){                                  //把功能存到變數navSlide裡面,為了addEventListener觸發用
-                        if($(document).scrollTop()==0){         //如果位於頁面頂端"scrollTop()==0",然後再滑下
-                            clearTimeout(timer);                //先取消"兩秒後自動收回"的倒數計時
-                            $('.nav').slideDown(500);           //然後讓nav滑下
-                            setTimeout(function(){flag=0},500); //***然後這邊我不知道為啥...
-                        }
                         if(flag==0 || flag==1) {                    //避免動作重複偵測
                             height_top_2 = $(document).scrollTop(); //當if成立時把目前頁面高度存入height_top_2
                             //此段針對不同瀏覽器而設定,在監聽滾輪時,Chrome偵測滾輪停止後的位置,Firefox偵測滾輪啟動時的位置
@@ -83,6 +78,11 @@ $(document).ready(function(){
                                 },200);
                         }//滑鼠往上
                         }
+                        if($(document).scrollTop()==0){         //如果位於頁面頂端"scrollTop()==0",然後再滑下
+            clearTimeout(timer);                //先取消"兩秒後自動收回"的倒數計時
+            $('.nav').slideDown(500);           //然後讓nav滑下
+            setTimeout(function(){flag=1},500); //500MS之後flag=1
+        }
                     };
     window.addEventListener("scroll",navSlide,false);   //監聽JQ事件"scroll"若是發生,就觸發navSlide這個功能
 
