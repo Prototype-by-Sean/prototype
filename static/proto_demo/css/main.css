@@ -15,6 +15,7 @@ body{
     width: 100%;
     padding-top: 3px;
     background: linear-gradient(to left top, rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+    box-shadow:1px 1px 2px rgb(64, 0, 25);
 }
 
 .navSlide{
@@ -38,10 +39,10 @@ body{
 }
 
 .nav a {
+    font-family: 'Poiret One', cursive;
+    font-weight: 600;
     color: #ffffff;
-    font-weight: bold;
-    font-size: 16px;
-    text-transform: uppercase;
+    font-size: 18px;
     text-decoration-color: #808080;
     padding-right: 20px;
     line-height:35px;
@@ -49,14 +50,13 @@ body{
 
 .nav a:hover{
     text-decoration: none;
-    text-shadow: 1px 1px 3px rgb(225, 43, 0);
+    text-shadow: 1px 1px 2px rgb(64, 0, 25);
 }
 
 .learnmore span{
-    font-family: "FangSong";
-    font-size:16px;
+    font-family: 'Raleway', sans-serif;
+    font-size:18px;
     display: none;
-
 }
 
 .nav li {
@@ -73,8 +73,8 @@ body{
 
 .jumbotron {
     position: absolute;
-    top:43px;
-    height: 400px;
+    /*top:43px;*/
+    height: 445px;
     width: 100%;
     background: url('/static/proto_demo/image/hptmp.JPG') no-repeat;
     background-size: cover;
