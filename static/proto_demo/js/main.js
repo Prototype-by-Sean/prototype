@@ -26,9 +26,11 @@ $(document).ready(function(){
 <!--navbar功能開始-->
 $(document).ready(function(){
     var flag=0,timer,timer_2;//nav使用變數
+    /*
     $('.logo').hover(function(){
         $('.logo').toggleClass('change');
     });//切換LOGE顏色
+    */
     $('.nav').mouseenter(function(){
         clearTimeout(timer_2);
         flag=1;
