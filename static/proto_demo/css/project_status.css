@@ -68,7 +68,7 @@
     font-size: 100%;
     font-style: normal;
     float:right;
-    width: 50%;
+    width: 30%;
     text-align: center;
 }/*標題__報名登錄*/
 .heighttop{
@@ -194,4 +194,8 @@
 
 #month{
 width: 4000px;
+}
+
+.test{
+   display: none;
 }

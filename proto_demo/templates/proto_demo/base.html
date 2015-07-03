@@ -37,15 +37,15 @@
                 <ul class="pull-right">
                     <li class="learnmore">
                         <a href="#">
-                            <i class="fa fa-bolt fa-lg"></i>
-                            &nbsp;<span>Start</span>    <!--這邊沒有包在i裡面因為會自動被縮小很醜-->
+                            <i class="fa fa-bolt fa-lg ww"></i>
+                            &nbsp;<span class = ww1>Start</span>    <!--這邊沒有包在i裡面因為會自動被縮小很醜-->
                         </a>
                     </li>
                     {% if user.is_authenticated %}
-                        <li><a href={% url 'proto_demo:logout' %}>Logout</a></li>
+                        <li class = ww1><a href={% url 'proto_demo:logout' %}>Logout</a></li>
                     {% else %}
-                        <li><a href="{% url 'proto_demo:create_new_maker'%}">Sign Up</a></li>
-                        <li><a href="{% url 'proto_demo:login' %}?next={{request.path}}">Login</a></li>
+                        <li class = ww1><a href="{% url 'proto_demo:create_new_maker'%}">Sign Up</a></li>
+                        <li class = ww1><a href="{% url 'proto_demo:login' %}?next={{request.path}}">Login</a></li>
                     {% endif %}
                 </ul>
             </div>
