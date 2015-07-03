@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block content %}
+    <!--忘記為什麼圖片一定要在這邊載入....要活得之類?-->
     <style>
     #project_1{
         background-image:url('/static/proto_demo/image/designer/bennylin/rocket%20alarm_1.png');
@@ -106,8 +107,8 @@
                          </span>
                     </form>
             </div>
-        </div>
-        <div class="row projectrow">
+        </div>               <!--標題Project & 搜尋欄-->
+        <div class="row projectrow">            <!--項目顯示--第 1 橫排-->
             <a href="#">
                 <div class="col-md-4 col-sm-4 col-xs-4 frame">
                     <div class="innerframe"  id="project_1">
@@ -130,7 +131,7 @@
                     </div>
                 </div>
             </a>
-
+            {{ newproject }}
             <a href="#">
                 <div class="col-md-4 col-sm-4 col-xs-4 frame">
                     <div class="innerframe" id="project_3">
@@ -142,9 +143,8 @@
                     </div>
                 </div>
             </a>
-
         </div>
-        <div class="row projectrow">
+        <div class="row projectrow">            <!--項目顯示--第 2 橫排-->
             <a href="#">
             <div class="col-md-4 col-sm-4 col-xs-4 frame">
                 <div class="innerframe" id="project_4">
@@ -183,8 +183,7 @@
         </div>
 </div>
 
-<div class="maker">
-    <div class="container">
+<div class="maker container">
         <div id="maker-head">
             <div class="col-md-12 col-xs-12">
                 <h2><i class="fa fa-users"></i>&nbsp&nbspMaker</h2>
@@ -195,7 +194,7 @@
                          </span>
                 </form>
             </div>
-        </div>
+        </div>                  <!--標題Maker & 搜尋欄-->
         <div class="row makerrow">
             <a href="#">
             <div class="col-md-4 col-sm-4 col-xs-4 frame">
@@ -227,7 +226,7 @@
                 </div>
             </div>
             </a>
-        </div>
+        </div>              <!--發起人顯示--第 1 橫排-->
         <div class="row makerrow">
             <a href="#">
             <div class="col-md-4 col-sm-4 col-xs-4 frame">
@@ -259,8 +258,7 @@
                 </div>
             </div>
             </a>
-        </div>
-    </div>
+        </div>              <!--發起人顯示--第 2 橫排-->
 </div>
 
 <footer>

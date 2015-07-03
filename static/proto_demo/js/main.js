@@ -3,10 +3,10 @@
 $(document).ready(function(){
                 $('.learnmore').hover(
                     function(){
-                        $('span',this).show()
+                        $('span',this).show(200)
                     },
                     function(){
-                        $('span',this).hide()
+                        $('span',this).hide(200)
                     }
                 );
                 /*

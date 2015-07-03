@@ -44,8 +44,10 @@
                     {% if user.is_authenticated %}
                         <li><a href={% url 'proto_demo:logout' %}>Logout</a></li>
                     {% else %}
+                        <div style="height: 45">
                         <li><a href="{% url 'proto_demo:create_new_maker'%}">Sign Up</a></li>
                         <li><a href="{% url 'proto_demo:login' %}?next={{request.path}}">Login</a></li>
+                        </div>
                     {% endif %}
                 </ul>
             </div>

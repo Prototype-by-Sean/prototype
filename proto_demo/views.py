@@ -212,6 +212,9 @@ def StartProjectFormView(request):
             #don't use project_form here! USE form
             #form.save() 之後回傳的東西是 model model 沒法再save_m2m()
             return redirect('proto_demo:project_status', pk=project_form.pk)
+            #上面藉由return以及pk就升成新的url頁面了!
+            newproject = '<a>123</a>'
+            return  render(request,'proto_demo/home/home.html',{'newproject':newproject})
     else:
         form = StartProjectForm()
         #empty form
