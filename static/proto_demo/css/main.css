@@ -312,4 +312,5 @@ footer{
 .rightSide{
     float: right;
     width: 50%;
+    line-height: 50px;
 }
