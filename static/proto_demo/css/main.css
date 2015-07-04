@@ -16,7 +16,7 @@ body{
     padding-top: 3px;
     background: linear-gradient(to left top, rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
     box-shadow:1px 1px 2px rgb(64, 0, 25);
-    line-height: 50px;
+    height: 50px;
 }
 
 .navSlide{
@@ -293,21 +293,21 @@ footer{
 }
 
 .learnmore{
-    line-height: 50px;
+    height: 50px;
     width: 100%;
 }
 
 .ww{
     width: 2%;
-    line-height: 50px;
+    height: 50px;
 }
 
 .ww1{
     width: 10%;
-    line-height: 50px;
+    height: 50px;
 }
 .rightSide{
     float: right;
     width: 50%;
-    line-height: 50px;
+    height: 50px;
 }
