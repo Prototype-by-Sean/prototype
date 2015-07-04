@@ -293,19 +293,16 @@ footer{
 }
 
 .learnmore{
-    position: absolute;
     line-height: 50px;
     width: 100%;
 }
 
 .ww{
-    position: absolute;
     width: 2%;
     line-height: 50px;
 }
 
 .ww1{
-    position: absolute;
     width: 10%;
     line-height: 50px;
 }
