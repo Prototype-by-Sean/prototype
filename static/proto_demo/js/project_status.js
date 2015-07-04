@@ -115,14 +115,26 @@ $(document).ready(function(){
         $("#monday").remove();
         $(".monday_2").show();
     });
-    $(".nav").hover(
+    $(".switch").mouseenter(
         function(){
-            $(".test").show(500);
-        },
+            timer5 = setTimeout(function() {
+                    $(".test").show(500)
+                }
+                ,1000)
+
+                }
+    );
+
+    $(".switch").mouseleave(
         function(){
+            clearTimeout(timer5);
             $(".test").hide(500);
         }
-    )
+    );
+        //function(){
+            //$(".test").hide(500);
+        //}
+
 });//測試
 
 $(document).ready(function(){
