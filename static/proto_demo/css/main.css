@@ -301,9 +301,14 @@ footer{
 .ww{
     position: absolute;
     width: 10%;
+    line-height: 50px;
 }
 
 .ww1{
     position: absolute;
     width: 30%;
+    line-height: 50px;
+}
+.rightSide{
+    float: right;
 }
