@@ -115,6 +115,14 @@ $(document).ready(function(){
         $("#monday").remove();
         $(".monday_2").show();
     });
+    $(".nav").hover(
+        function(){
+            $(".test").show(500);
+        },
+        function(){
+            $(".test").hide(500);
+        }
+    )
 });//測試
 
 $(document).ready(function(){
