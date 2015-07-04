@@ -298,7 +298,7 @@ footer{
 }
 
 .ww{
-
+    margin: auto;
     width: 10%;
     height: 50px;
 }
@@ -308,9 +308,6 @@ footer{
     height: 50px;
 }
 
-.ww3{
-    text-align: center
-}
 .rightSide{
     float: right;
     width: 30%;
