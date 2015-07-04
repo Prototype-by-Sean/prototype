@@ -118,9 +118,9 @@ $(document).ready(function(){
     $(".switch").mouseenter(
         function(){
             timer5 = setTimeout(function() {
-                    $(".test").show(500)
+                    $(".test").show(200)
                 }
-                ,1000)
+                ,500)
 
                 }
     );
@@ -128,12 +128,12 @@ $(document).ready(function(){
     $(".switch").mouseleave(
         function(){
             clearTimeout(timer5);
-            $(".test").hide(500);
+            timer6 = setTimeout(function(){
+                $(".test").hide(200)
+            },600)
+
         }
     );
-        //function(){
-            //$(".test").hide(500);
-        //}
 
 });//測試
 
