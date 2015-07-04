@@ -3,7 +3,7 @@
 $(document).ready(function(){
                 $('.learnmore').hover(
                     function(){
-                        $('span',this).show()
+                        $('span',this).show(500)
                     },
                     function(){
                         $('span',this).hide()
