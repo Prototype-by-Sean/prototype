@@ -11,6 +11,8 @@
     border-bottom: 3px;
     border-bottom-style: solid;
     border-bottom-color: darkseagreen;
+
+
 }/*標題底線*/
 .logo{
     margin: 0px ;
@@ -58,7 +60,6 @@
     position: absolute;
     width: 30%;
     float:right;
-    background-color: darkgoldenrod;
     margin-left: 70%;
 }/*綑綁報名登錄*/
 .nav_right{
@@ -203,7 +204,6 @@ width: 4000px;
 .logo_f {
     margin: 0px;
     padding: 0px;
-    background-color: #FF8F59;
     width: 70%;
     line-height: 40px;
     font-size: 30px;
@@ -224,4 +224,8 @@ width: 4000px;
 }
 .switch{
     height: 40px;
+}
+
+.colo{
+    background: linear-gradient(to left top, rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
 }
