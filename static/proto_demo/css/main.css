@@ -295,7 +295,7 @@ footer{
 .learnmore{
     position: absolute;
     line-height: 50px;
-    width: 30%;
+    width: 100%;
 }
 
 .ww{
@@ -311,4 +311,5 @@ footer{
 }
 .rightSide{
     float: right;
+    width: 50%;
 }
