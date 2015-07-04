@@ -298,12 +298,13 @@ footer{
 }
 
 .ww{
-    margin: auto;
+    float: right;
     width: 10%;
     height: 50px;
 }
 
 .ww1{
+    float: right;
     width: 30%;
     height: 50px;
 }
