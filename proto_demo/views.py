@@ -6,6 +6,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models.fields.files import FieldFile
 from django.views.generic import FormView
 from django.views.generic.base import TemplateView
+from django.views.generic.edit import UpdateView
 from django.contrib import messages
 from django.views.generic import DetailView,ListView
 from django.utils.timezone import datetime
@@ -35,9 +36,12 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
-#        messages.info(self.request, 'This is a demo of a message.')
-        #relode 首頁會出現的訊息，但是一直出現在admin頁面
+        # 他要一個get_context_data,跟老爸的一模一樣,但是因為老爸寫過了不用重寫,所以定義了一個一模一樣的然後super老爸出來用
+        # 每次都忘記super就是叫出自己的爸爸的功能; context_data 是環境參數
+#       messages.info(self.request, 'This is a demo of a message.')
+        # relode 首頁會出現的訊息，但是一直出現在admin頁面
         return context
+
 
 
 class DefaultFormsetView(FormView):
@@ -71,7 +75,9 @@ class FormWithFilesView(FormView):
 
     def get_context_data(self, **kwargs):
         context = super(FormWithFilesView, self).get_context_data(**kwargs)
+        # 要捨定這個VIEW的環境參數,就把祖先的get_context_data這個方法叫出來用
         context['layout'] = self.request.GET.get('layout', 'vertical')
+        # 在環境參數裡面增加一對數據：叫做layout,設定如=後面的
         return context
 
     def get_initial(self):
@@ -104,11 +110,30 @@ class PaginationView(TemplateView):
 class MiscView(TemplateView):
     template_name = 'proto_demo/examples/misc.html'
 
-#-------------------------------------------------Prototype View----------------------------------------------
+# -------------------------------------------------Prototype View----------------------------------------------
+
+class HomePageProjectView(UpdateView):
+    # so.....這個視圖要做甚麼呢?
+    # 1.渲染首頁
+    # 2.讀取model裡面的資料轉成html
+    # 3.沒了?!
+    # 4.
+    # 5.
+    template_name = 'proto_demo/home/home.html'
+    model = Project
+
+    def get_context_data(self, **kwargs):
+        context = super(HomePageProjectView, self).get_context_data(**kwargs)
+        # 他要一個get_context_data,跟老爸的一模一樣,但是因為老爸寫過了不用重寫,所以定義了一個一模一樣的然後super老爸出來用
+        # 每次都忘記super就是叫出自己的爸爸的功能; context_data 是環境參數
+        return context
+
+    def update_new_project(self,**kwargs):
+        pass
+
 
 def NewMakerView(request):
-# A boolean value for telling the template whether the registration was successful.
-    # Set to False initially. Code changes value to True when registration succeeds.
+    # 用這個變數來判定註冊是否完成,剛啟動這個功能當然預設事"否",註冊完畢之後才調整為"是"
     registered = False
 
     # If it's a HTTP POST, we're interested in processing form data.
@@ -137,9 +162,9 @@ def NewMakerView(request):
             # Now we save the UserProfile model instance.
             profile.save()
             profile_form.save_m2m()
-                            #major = Major.objects.get(major_name=profile_form.cleaned_data['other_major'])
-                            #profile.maker_major.add(major)
-                            #如果other_major不存在maker表格裡面才要加上面兩行
+            # major = Major.objects.get(major_name=profile_form.cleaned_data['other_major'])
+            # profile.maker_major.add(major)
+            # 如果other_major不存在maker表格裡面才要加上面兩行
             # Update our variable to tell the template registration was successful.
             registered = True
         # Invalid form or forms - mistakes or something else?
@@ -156,8 +181,11 @@ def NewMakerView(request):
 
     # Render the template depending on the context.
     return render(request,
-            'proto_demo/register.html',
-            {'user_form': user_form, 'profile_form': profile_form, 'registered': registered} )
+        'proto_demo/register.html',
+        {'user_form': user_form,
+        'profile_form': profile_form,
+        'registered': registered
+        })
 
 def user_login(request):
     # If the request is a HTTP POST, try to pull out the relevant information.
@@ -194,13 +222,11 @@ def user_login(request):
         return render(request, 'proto_demo/home/login.html', {'login_form':LoginForm,'next': request.GET.get('next','')})
 
 
-
-
 @login_required
 def StartProjectFormView(request):
     if request.method == "POST":
         form = StartProjectForm(request.POST,request.FILES)
-        #form with data 要上傳檔案,所以要加request.FILES
+        # form with data 要上傳檔案,所以要加request.FILES
         if form.is_valid():
             project_form = form.save(commit=False)
             project_form.pub_date = datetime.now()
@@ -209,16 +235,15 @@ def StartProjectFormView(request):
             # project_form.project_maker 這樣其實會被轉成一個 select
             # this is how you should use m2m field!!!!!!!!!
             form.save_m2m()
-            #don't use project_form here! USE form
-            #form.save() 之後回傳的東西是 model model 沒法再save_m2m()
+            # don't use project_form here! USE form
+            # form.save() 之後回傳的東西是 model model 沒法再save_m2m()
             return redirect('proto_demo:project_status', pk=project_form.pk)
-            #上面藉由return以及pk就升成新的url頁面了!
-            newproject = '<a>123</a>'
-            return  render(request,'proto_demo/home/home.html',{'newproject':newproject})
+            # 上面藉由return以及pk就生成新的url頁面了!
     else:
         form = StartProjectForm()
-        #empty form
+        # empty form
     return render(request, 'proto_demo/projects/start_project.html', {'form': form,})
+
 
 
 @login_required
@@ -234,20 +259,20 @@ def ProjectStatusView(request,pk):
     relatemaker = Maker.objects.filter(maker_major__in=project.project_request_major.all())
     # 從 Maker 表格裡面 拉出 majro欄位中 包含project.project_request_major 的所有人
     relatemaker = list(set(relatemaker))
-    #用set 把重複的剃除
+    # 用set 把重複的剃除
     relatemaker_i_majro = []
-    #開一個空的list,等下要儲存(append)每個使用者交集的結果,因為要有順序,所以要用list
+    # 開一個空的list,等下要儲存(append)每個使用者交集的結果,因為要有順序,所以要用list
     p_request_major = project.project_request_major.all()
     # 先把 project_request_major 做成 QuetySet 丟進變數,等下做交集的時候會用到
 
-    #接下來要做每個maker的 maker_major 與 request_major的交集,所以用for把每個maker拉出來,再檢索他的maker_major
+    # 接下來要做每個maker的 maker_major 與 request_major的交集,所以用for把每個maker拉出來,再檢索他的maker_major
     for r_m in relatemaker:
         rm = Maker.objects.get(user=r_m)
         rm_major = Major.objects.filter(maker__user=rm).all()
         # **r_major = Maker.objects.filter(user=r_m).values_list('maker_major__major_name')
         # 用values_list 取m2m欄位__major_name !!!注意！！！maker_major__major_name　這種用法正反向m2m都通用！！
         # **這行等於上面兩行,但是傳回的東西不同 因為我要她傳回querset所以不能用values_list
-        rm_inter_major =  rm_major&p_request_major
+        rm_inter_major = rm_major & p_request_major
         # 這邊就知道為啥一定要他回傳queryset了 因為要做交集,不一樣的格式會變成空集合
         relatemaker_i_majro.append(rm_inter_major)
         # *extend = 延伸原本的list = 維持1 個 list
@@ -255,11 +280,11 @@ def ProjectStatusView(request,pk):
         # 排序要照著配對條件多寡的順序 rm_inter_major
         # 但是顯示還是要顯示全部的 rm_major 這部分在從 template裡面拉就可以
     result = dict(zip(relatemaker, relatemaker_i_majro))
-    #把 relatemaker 人名 跟 交集的 rm_inter_major 合併為一個dict
+    # 把 relatemaker 人名 跟 交集的 rm_inter_major 合併為一個dict
 
-    result = sorted(result,key=lambda k:len(result[k]),reverse=True)
-    #依照這個 dict 的 values長度 做排序 (因為dict本身沒有順序 所以輸出還是一個list *OrderedDict不知道為啥不能用)
-    #至此 result 輸出的就是 依照配對成功條件降冪排序的 maker 然後顯示maker_major 的部分在template裡面完成
+    result = sorted(result,key=lambda k: len(result[k]),reverse=True)
+    # 依照這個 dict 的 values長度 做排序 (因為dict本身沒有順序 所以輸出還是一個list *OrderedDict不知道為啥不能用)
+    # 至此 result 輸出的就是 依照配對成功條件降冪排序的 maker 然後顯示maker_major 的部分在template裡面完成
 
     # **lambda用法:
     # 以relatemaker_majro 的多寡排序=>sorted方法參照 key, key=建立一個匿名功能 參數是 k , k 帶入函式 len(result[k])
@@ -273,18 +298,18 @@ def ProjectStatusView(request,pk):
 
 
 @login_required
-#這個view只是測試用的
+# 這個view只是測試用的
 def MakerProfileView(request,pk):
         maker = get_object_or_404(Maker,pk = pk)
         return render(request, 'proto_demo/makers/maker_profile.html',{'maker':maker})
 
 @login_required
 def MakerBlogView(request,pk):
-    #blog頁面要呈現的東西
-    #1.  先讀取是哪個MAKER,針對MAKER去撈DB裡面的資料,渲染在HTML上
-    #1.1 可以藉由登入訊息知道是哪個USER 但是要自動產生對應的 MakerBlog
-    #2.  好像也就這樣XD 但是如果是使用者自己登入會比較複雜
-    #3.  擁有者登入的話,編輯大頭,編輯jumboturn,編輯GALLERY,新增貼文
+    # blog頁面要呈現的東西
+    # 1.  先讀取是哪個MAKER,針對MAKER去撈DB裡面的資料,渲染在HTML上
+    # 1.1 可以藉由登入訊息知道是哪個USER 但是要自動產生對應的 MakerBlog
+    # 2.  好像也就這樣XD 但是如果是使用者自己登入會比較複雜
+    # 3.  擁有者登入的話,編輯大頭,編輯jumboturn,編輯GALLERY,新增貼文
     maker = get_object_or_404(Maker,pk = pk)
     form = MakerBlogForm(request.POST,request.FILES)
 
@@ -293,10 +318,10 @@ def MakerBlogView(request,pk):
                         'form':form,
                 })
 
-#---------------------ajax學習中-------------------------------------------
-#issues
-#1 render指定位置不會用
-#題外話 CBV 到底怎用 叫出來 填參數 結束?
+# ---------------------ajax學習中-------------------------------------------
+# issues
+# 1 render指定位置不會用
+# 題外話 CBV 到底怎用 叫出來 填參數 結束?
 
 class JSONResponseMixin(object):
     def render_to_response(self, context):
@@ -306,7 +331,7 @@ class JSONResponseMixin(object):
     def convert_context_to_json(self, context):
         return json.dumps(context)
 
-#客戶端收到url需求之後，而且設定model為person，傳到這個view，先把model裡面的東西轉成json等使用者點擊??
+# 客戶端收到url需求之後，而且設定model為person，傳到這個view，先把model裡面的東西轉成json等使用者點擊??
 class HybridDetailView(JSONResponseMixin, SingleObjectTemplateResponseMixin, BaseDetailView):
     def render_to_response(self, context):
         if self.request.is_ajax():
@@ -341,11 +366,7 @@ class AjaxableResponseMixin(object):
         else:
             return response
 
-#---------------------ajax學習中-------------------------------------------
-
-def Match(object):
-    pass
-
+# ---------------------ajax學習中-------------------------------------------
 
 @login_required
 def restricted(request):

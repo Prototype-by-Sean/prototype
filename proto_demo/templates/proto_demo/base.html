@@ -9,12 +9,10 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400;300' rel='stylesheet' type='text/css'>
     <link href="/static/proto_demo/css/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
     <!--
     <link rel="stylesheet" href="/static/proto_demo/css/metro-bootstrap.css">
     <link rel="stylesheet" href="/static/proto_demo/css/metro-bootstrap-responsive.css">
     -->
-
     <!--載入CSS,JQ,JS-->
     <link rel="stylesheet" href="/static/proto_demo/css/main.css">
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -35,13 +33,11 @@
                     <li><a id="logo" href="{% url 'proto_demo:home' %}">雛<span> ‧ 形</span></a></li>
                 </ul>
                 <div class="rightSide">
-
                     {% if user.is_authenticated %}
                         <li class = "ww1 pull-right"><a href={% url 'proto_demo:logout' %}>Logout</a></li>
                     {% else %}
                         <li class = "ww1 pull-right"><a href="{% url 'proto_demo:login' %}?next={{request.path}}">Login</a></li>
                         <li class = "ww1 pull-right"><a href="{% url 'proto_demo:create_new_maker'%}">Sign Up</a></li>
-
                     {% endif %}
                     <div class="learnmore pull-right">
 

@@ -1,4 +1,3 @@
-
 //var timer;
 $(document).ready(function(){
                 $('.learnmore').hover(

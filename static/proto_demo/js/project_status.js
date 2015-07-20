@@ -100,9 +100,9 @@ $(document).ready(function(){
             flag=0;
         }
     });
-
 });
 <!--navbar功能結束-->
+
 
 $(document).ready(function(){
     $('.btn_2').click(function(){
