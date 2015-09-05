@@ -1,0 +1,66 @@
+.nav{
+    position: absolute;
+    width: 100%;
+    height:40px;
+
+}
+
+.colo{
+    background: linear-gradient(to left top, rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+    box-shadow:1px 1px 2px rgb(64, 0, 25);
+}
+
+.logo_f {
+    color: #ffffff;
+    margin: 0px 0px 0px 10px;
+    padding: 0px;
+    width: 70%;
+    line-height: 40px;
+    font-size: 30px;
+    font-style: normal;
+    float: left;
+    position: absolute;
+    text-shadow:1px 1px 2px rgb(255, 112, 0);
+}
+
+.nav_mid{
+    margin: 0px ;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    line-height: 20px;
+    font-size: 20px;
+    font-style: normal;
+    float:left;
+}
+
+.rightArea{
+    position: absolute;
+    width: 30%;
+    float:right;
+    margin-left: 70%;
+}
+
+.nav_right_f {
+    color: #ffffff;
+    margin: 0px;
+    padding: 10px 0px 10px 0px;
+    line-height: 20px;
+    font-size: 100%;
+    font-style: normal;
+    float: right;
+    width: 25%;
+    text-align: center;
+}
+
+.switch{
+    height: 40px;
+}
+
+.fast_match_show{
+   display: none;
+}
+.navSlide{
+    position: fixed;
+    display: none;
+}/*nav滑動*/

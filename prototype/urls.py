@@ -9,7 +9,8 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^demo/', include('proto_demo.urls', namespace = 'proto_demo')),
+    url(r'^demo/', include('proto_demo.urls', namespace='proto_demo')),
+    url(r'^match/', include('match.urls', namespace='match')),
     #url(r'^media/(?P<path>.*)', media_view),
 
 

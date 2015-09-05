@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.core.files.storage import default_storage
-from django.shortcuts import get_object_or_404, render,redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models.fields.files import FieldFile
 from django.views.generic import FormView
@@ -10,9 +10,9 @@ from django.views.generic.edit import UpdateView
 from django.contrib import messages
 from django.views.generic import DetailView,ListView
 from django.utils.timezone import datetime
-from models import Project,Maker,Major,User,MakerBlog
+from models import Project, Maker, Major, User, MakerBlog
 from forms import ContactForm, FilesForm, ContactFormSet,StartProjectForm,NewMakerForm,\
-    MakerProfileForm,LoginForm,MakerBlogForm,AjaxTestForm
+    MakerProfileForm, LoginForm, MakerBlogForm, AjaxTestForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
@@ -112,24 +112,24 @@ class MiscView(TemplateView):
 
 # -------------------------------------------------Prototype View----------------------------------------------
 
-class HomePageProjectView(UpdateView):
+class HomePageProjectView(ListView):
     # so.....這個視圖要做甚麼呢?
     # 1.渲染首頁
     # 2.讀取model裡面的資料轉成html
     # 3.沒了?!
     # 4.
     # 5.
-    template_name = 'proto_demo/home/home.html'
+    template_name = 'proto_demo/home/home_v1.1.html'
     model = Project
 
     def get_context_data(self, **kwargs):
         context = super(HomePageProjectView, self).get_context_data(**kwargs)
         # 他要一個get_context_data,跟老爸的一模一樣,但是因為老爸寫過了不用重寫,所以定義了一個一模一樣的然後super老爸出來用
-        # 每次都忘記super就是叫出自己的爸爸的功能; context_data 是環境參數
+        # 每次都忘記super就是叫出自己的爸爸的功能; context_data 是環境參數，應該是還要加東西，才super出來的吧?
+
         return context
 
-    def update_new_project(self,**kwargs):
-        pass
+
 
 
 def NewMakerView(request):
@@ -326,8 +326,10 @@ def MakerBlogView(request,pk):
 class JSONResponseMixin(object):
     def render_to_response(self, context):
         return self.get_json_response(self.convert_context_to_json(context))
+
     def get_json_response(self, content, **httpresponse_kwargs):
         return HttpResponse(content, content_type='application/json', **httpresponse_kwargs)
+
     def convert_context_to_json(self, context):
         return json.dumps(context)
 
@@ -379,3 +381,6 @@ def user_logout(request):
     logout(request)
     # Take the user back to the homepage.
     return HttpResponseRedirect('../')
+
+# ------- co-work test/2015/0903 -----
+

@@ -3,8 +3,7 @@ from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url, include
 import views
-from views import HomePageView, FormHorizontalView, FormInlineView, PaginationView, FormWithFilesView, \
-    DefaultFormView, MiscView, DefaultFormsetView, DefaultFormByFieldView,HybridDetailView
+from views import *
 from models import Person
 # Uncomment the next two lines to enable the admin:
 #from django.contrib import admin
@@ -21,8 +20,9 @@ from models import Person
 #     # url(r'^admin/', include(admin.site.urls)),
 # )
 urlpatterns = patterns('',
-#-------------------------prototype-----------------------------------------
+# -------------------------prototype-----------------------------------------
     url(r'^$', HomePageView.as_view(), name='home'),
+    url(r'^prototype/$', HomePageProjectView.as_view(), name='home_v1.1'),
     url(r'^newmaker/$',views.NewMakerView, name='create_new_maker'),
     url(r'^login/$', views.user_login, name='login'),
     url(r'^newproject$',views.StartProjectFormView, name='start_project'),
@@ -31,10 +31,9 @@ urlpatterns = patterns('',
     url(r'^restricted/', views.restricted, name='restricted'),
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^ajax/(?P<pk>\d)$', HybridDetailView.as_view(model=Person)),
+# -------------------------prototype-----------------------------------------
 
-#-------------------------prototype-----------------------------------------
-
-#-------------------------bootstrap examples-----------------------------------------
+# -------------------------bootstrap examples-----------------------------------------
     url(r'^formset$', DefaultFormsetView.as_view(), name='formset_default'),
     url(r'^form$', DefaultFormView.as_view(), name='form_default'),
     url(r'^form_by_field$', DefaultFormByFieldView.as_view(), name='form_by_field'),
@@ -44,10 +43,10 @@ urlpatterns = patterns('',
     url(r'^pagination$', PaginationView.as_view(), name='pagination'),
     url(r'^misc$', MiscView.as_view(), name='misc'),
 
-#-------------------------bootstrap examples-----------------------------------------
+# -------------------------bootstrap examples-----------------------------------------
 
-#---------------------------my tests-------------------------------------------------
-    url(r'^(?P<project_id>\d+)/match$', views.Match, name='match'),
+# ---------------------------my tests-------------------------------------------------
+
     url(r'^yourprofile/(?P<pk>\d+)$', views.MakerProfileView, name='maker_profile'),
 
 #    url(r'^weblog/', include('zinnia.urls', namespace='zinnia')),

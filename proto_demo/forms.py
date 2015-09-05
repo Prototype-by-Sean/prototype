@@ -51,10 +51,10 @@ class NewMakerForm(forms.ModelForm):
         }
 
         widgets = {
-            'username':forms.TextInput(attrs={'autocomplete':'off','placeholder': '必要的。小於 30 個字, 只包含字母、數字和 @ . + - _'}),
+            'username':forms.TextInput(attrs={'autocomplete':'off','placeholder': '必要的。小於 30 個字, 只包含字母、數字和 @ . + - _', }),
             'email':forms.TextInput(attrs={'autocomplete':'off',}),
             'password':forms.TextInput(attrs={'autocomplete':'off',}),
-            'first_name':forms.TextInput(attrs={'placeholder': '該怎麼稱呼您?',}),
+            'first_name':forms.TextInput(attrs={'placeholder': '該怎麼稱呼您?', }),
         }
 
 #   def clean(self, *args, **kwargs):
@@ -82,6 +82,7 @@ class MakerProfileForm(forms.ModelForm):
             'maker_bonus_offer':forms.TextInput(attrs={'placeholder':'其他您擁有,或可以提供的特點. EX:場地,工具,服務..'}),
             'maker_detail':CKEditorWidget(attrs={'placeholder':'在此處盡可能得清楚表達您的想法、希望發起或參與的項目、或任何有助於您表達自己的介紹'})
         }
+
     def clean(self, *args, **kwargs):
         super(MakerProfileForm,self).clean()
         major, _ = Major.objects.get_or_create(major_name=self.cleaned_data.get('maker_other_major'))

@@ -15,8 +15,10 @@
     -->
     <!--載入CSS,JQ,JS-->
     <link rel="stylesheet" href="/static/proto_demo/css/main.css">
+    <link  href="/static/proto_demo/css/nav.css" rel="stylesheet">
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
     <script src="/static/proto_demo/js/main.js"></script>
+    <script src="/static/proto_demo/js/nav.js"></script>
 
     <!--
     <script src="/static/proto_demo/js/jquery.widget.min.js"></script>
@@ -27,31 +29,22 @@
 
 {% block bootstrap3_content %}
     {# bootstrap_messages #}
-        {% block nav %}
-            <div class="nav">
-                <ul class="pull-left">
-                    <li><a id="logo" href="{% url 'proto_demo:home' %}">雛<span> ‧ 形</span></a></li>
-                </ul>
-                <div class="rightSide">
-                    {% if user.is_authenticated %}
-                        <li class = "ww1 pull-right"><a href={% url 'proto_demo:logout' %}>Logout</a></li>
-                    {% else %}
-                        <li class = "ww1 pull-right"><a href="{% url 'proto_demo:login' %}?next={{request.path}}">Login</a></li>
-                        <li class = "ww1 pull-right"><a href="{% url 'proto_demo:create_new_maker'%}">Sign Up</a></li>
-                    {% endif %}
-                    <div class="learnmore pull-right">
+    {% block nav %}
+        <div class = "nav colo">
+            <p class = "logo_f">M.A.T.C.H</p><!--LOGO-->
+        </div>
+        <div class = "nav_mid"></div>
 
-                            <i class="fa fa-bolt fa-lg ww"></i>
-
-
-                        <a href="#">
-                            &nbsp;<span class = " coco ww1">Start</span>    <!--這邊沒有包在i裡面因為會自動被縮小很醜-->
-                        </a>
-
-                    </div>
-                </div>
+        <div class="rightArea nav">
+                <p class = "nav_right_f">login</p>
+                <p class = "nav_right_f">sign up</p>
+            <div class = "switch">
+                <p class = "nav_right_f fast_match_show">快速配對</p>
+                <i class="fa fa-bolt fa-lg fast_match nav_right_f" style="color: whitesmoke"></i>
             </div>
-        {% endblock %}
+        </div>
+
+    {% endblock %}
 
     {% block content %}
     {% endblock %}
