@@ -5,7 +5,7 @@ from models import *
 
 @admin.register(Member)
 class MemberAdmin(admin.ModelAdmin):
-    fields = ('user', 'biological_sex', 'sexuality')
+    fields = ()
 
 
 @admin.register(BiologicalSex)
@@ -30,7 +30,7 @@ class RelationShipStatusAdmin(admin.ModelAdmin):
 
 @admin.register(BloodType)
 class BloodTypeAdmin(admin.ModelAdmin):
-    list_display = ()
+    list_display = ('blood_type', )
 
 
 @admin.register(Location)
