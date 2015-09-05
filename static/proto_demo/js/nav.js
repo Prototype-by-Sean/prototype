@@ -73,3 +73,13 @@ $(document).ready(function(){
     });
 });
 <!--navbar功能結束-->
+//登入頁面控制
+$(document).ready(function(){
+    $('#login_bottom').click(function(){//按login會顯示登入畫面
+        $('.login').fadeIn(500);
+    });
+    $('.cancel').click(function(){//按叉叉登入畫面會消失
+        $('.login').fadeOut(500);
+    });
+});
+//登入頁面控制

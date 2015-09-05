@@ -64,3 +64,34 @@
     position: fixed;
     display: none;
 }/*nav滑動*/
+.login{
+    display: none;
+    position: fixed;
+    width: 50%;
+    height: 50%;
+    margin-left: 24%;
+    margin-top: 10%;
+    border-radius: 20px;
+    background-color: rgba(169,3,41,1);
+}
+.login_in{
+    width: 92%;
+    height: 85%;
+    margin-left: 4%;
+    margin-top: 3.5%;
+    border-radius: 15px;
+    background-color: lightcoral;
+
+}
+.cancel{
+    position: absolute;
+    width: 5%;
+    height: 10%;
+    margin-left: 96%;
+    border-radius: 50%;
+    background-color: white;
+    border-style: solid;
+    border-width: medium;
+    border-color: lightcoral;
+    text-align: center;
+}
