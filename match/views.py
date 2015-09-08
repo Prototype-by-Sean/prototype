@@ -20,8 +20,13 @@ class HomePageView(ListView):
 # =======ET=======
 def search_view(request):
         if request.method =='POST':
-                form = request.POST
+                form_in = request.POST
+                for c in form_in:
+                        if c !='submit' and c !='csrfmiddlewaretoken' and len(form_in[c]) != 0:
+                                #分單次搜索根多次搜索 分開查詢
+                                pass
+                return render(request,'match/end.html',{'end':end})
         else:
                 form = SearchForm()
-        return render(request,'match/test.html',{'test':form})
+                return render(request,'match/test.html',{'test':form})
 # =======ET=======

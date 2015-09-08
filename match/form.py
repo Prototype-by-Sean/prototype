@@ -24,7 +24,6 @@ class SearchForm(forms.ModelForm):
                   'religion',
                   'relationship',
                   'relationship_status',
-
                   )
         widgets = {
             'blood_type':forms.CheckboxSelectMultiple(),
@@ -33,7 +32,6 @@ class SearchForm(forms.ModelForm):
             'relationship':forms.CheckboxSelectMultiple(),
             'relationship_status':forms.CheckboxSelectMultiple(),
         }
-
     def __init__(self, submit_title='Submit', *args,  **kwargs):
         super(SearchForm, self).__init__(*args, **kwargs)
         self.fields['blood_type'].empty_label = None
