@@ -7,4 +7,5 @@ from views import *
 
 urlpatterns = patterns('',
     url(r'^$', HomePageView.as_view(), name='home'),
+    url(r'^test/$', SearchView, name='home'),
 )
