@@ -20,8 +20,9 @@ class HomePageView(ListView):
 # =======ET=======
 def search_view(request):
         if request.method =='POST':
-                form = request.POST
+                form = str(request.POST)
+                return render(request,'match/test.html',{'test1':form})
         else:
                 form = SearchForm()
-        return render(request,'match/test.html',{'test':form})
+                return render(request,'match/test.html',{'test':form})
 # =======ET=======
