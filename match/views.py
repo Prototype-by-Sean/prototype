@@ -18,7 +18,7 @@ class HomePageView(ListView):
         template_name = 'match/home.html'
 
 # =======ET=======
-def SearchView(request):
+def search_view(request):
         if request.method =='POST':
                 form = SearchForm()
         else:
