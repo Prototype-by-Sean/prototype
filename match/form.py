@@ -6,12 +6,26 @@ from .models import Member
 # =========ET=========
 class SearchForm(forms.ModelForm):
     pic = forms.BooleanField()
-    height_max = forms.IntegerField()
-    height_min = forms.IntegerField()
-
+    height_max = forms.IntegerField(max_value=300,min_value=50)
+    height_min = forms.IntegerField(max_value=300,min_value=50)
+    weight_max = forms.IntegerField(max_value=300,min_value=20)
+    weight_min = forms.IntegerField(max_value=300,min_value=20)
+    age_max = forms.IntegerField()
+    age_min = forms.IntegerField()
     class Meta:
         model = Member
-        fields = ('sexuality',)
+        fields = ('pic',
+                  'sexuality',
+                  'height_min','height_max',
+                  'weight_min','weight_max',
+                  'age_min','age_max',
+                  'blood_type',
+                  'location',
+
+                  )
+        widgets = {
+            'location':forms.CheckboxSelectMultiple(),
+        }
 
     def __init__(self, submit_title='Submit', *args,  **kwargs):
         super(SearchForm, self).__init__(*args, **kwargs)
