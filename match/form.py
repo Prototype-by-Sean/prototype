@@ -29,6 +29,7 @@ class SearchForm(forms.ModelForm):
 
     def __init__(self, submit_title='Submit', *args,  **kwargs):
         super(SearchForm, self).__init__(*args, **kwargs)
+        self.fields['location'].empty_label = None
         self.helper = FormHelper()
         self.helper.add_input(Submit('submit', submit_title))
 # =========ET=========
