@@ -21,15 +21,22 @@ class SearchForm(forms.ModelForm):
                   'age_min','age_max',
                   'blood_type',
                   'location',
+                  'religion',
+                  'relationship',
+                  'relationship_status',
 
                   )
         widgets = {
+            'blood_type':forms.CheckboxSelectMultiple(),
             'location':forms.CheckboxSelectMultiple(),
+            'religion':forms.CheckboxSelectMultiple(),
+            'relationship':forms.CheckboxSelectMultiple(),
+            'relationship_status':forms.CheckboxSelectMultiple(),
         }
 
     def __init__(self, submit_title='Submit', *args,  **kwargs):
         super(SearchForm, self).__init__(*args, **kwargs)
-        self.fields['location'].empty_label = None
+        self.fields['location','blood_type'].empty_label = None
         self.helper = FormHelper()
         self.helper.add_input(Submit('submit', submit_title))
 # =========ET=========
