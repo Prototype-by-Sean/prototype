@@ -17,11 +17,11 @@ class HomePageView(ListView):
         context_object_name = 'members'
         template_name = 'match/home.html'
 
-#=======ET=======
+# =======ET=======
 def SearchView(request):
         if request.method =='POST':
                 form = SearchForm()
         else:
                 form = SearchForm()
         return render(request,'match/test.html',{'test':form})
-#=======ET=======
+# =======ET=======
