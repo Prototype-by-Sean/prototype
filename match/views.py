@@ -27,18 +27,24 @@ def search_view(request):
                 ttt = 0
                 # =========處理傳入需求==========
                 try:
-                        print(form_in['find_girl'])
-                        try:
-                             print(form_in['find_boy'])
-                             ttt = 1
-                        except:
-                                ttt = 2
+                        if len(form_in['find_girl']) > 0:
+                                try:
+                                        if len(form_in['find_boy'])>0:
+                                                ttt = 1
+                                except:
+                                        ttt = 2
                 except:
-                        try:
-                              print(form_in['find_boy'])
-                              ttt = 3
-                        except:
-                                ttt = 4
+                        ttt = 4
+
+                try:
+                        if len(form_in['find_boy'])>0:
+                                try:
+                                        if len(form_in['find_girl']) > 0:
+                                                ttt = 1
+                                except:
+                                        ttt = 3
+                except:
+                        ttt = 4
                 # =========處理傳入需求==========
 
 
