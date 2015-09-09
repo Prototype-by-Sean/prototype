@@ -22,7 +22,7 @@ class HomePageView(ListView):
 def search_view(request):
         if request.method =='POST':
                 form_in = request.POST          # 字典型態{'a':[1,2],'b':[5,6],'c':[]}
-                form_in = {'age':[26,27,28]}
+                form_in = {'age':[26,27]}
                 use_info = str(request.user)    # 傳入name
                 # =========處理傳入需求==========
                 try:
