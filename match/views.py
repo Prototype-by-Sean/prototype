@@ -26,10 +26,13 @@ def search_view(request):
                 use_info = str(request.user)    # 傳入name
                 # =========處理傳入需求==========
                 try:
+                        pass
                         form_in['find_girl']
                         try:
+                             pass
                              form_in['find_boy']
                         except:
+                                pass
                                 dict_in = Member.objects.filter(age__in = form_in['age'])
                 except:
                         pass
@@ -39,7 +42,7 @@ def search_view(request):
                         #if c !='submit' and c !='csrfmiddlewaretoken' and len(form_in[c]) != 0:
                                 #分單次搜索根多次搜索 分開查詢
 
-
+                dict_in = Member.objects.filter(age__in = form_in['age'])
                                 #pass
                 end = dict_in
                 return render(request,'match/end.html',{'end':end})
