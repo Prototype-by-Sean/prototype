@@ -15,7 +15,6 @@ class SearchForm(forms.ModelForm):
     class Meta:
         model = Member
         fields = ('pic',
-                  'sexuality',
                   'height_min','height_max',
                   'weight_min','weight_max',
                   'age_min','age_max',
