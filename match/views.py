@@ -48,7 +48,7 @@ def search_view(request):
 
 
                 # dict_in = Member.objects.filter(age__in = form_in['age'])
-                end = form_in
+                end = form_in['find_girl']
                 return render(request,'match/end.html',{'end':end})
         else:
                 form = SearchForm()
