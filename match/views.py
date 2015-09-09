@@ -21,15 +21,20 @@ class HomePageView(ListView):
 # =======ET=======
 def search_view(request):
         if request.method =='POST':
-                form_in = request.POST          # 字典型態
-                use_info = request.user
+                form_in = request.POST          # 字典型態{'a':[1,2],'b':[5,6],'c':[]}
+                use_info = str(request.user)    # 傳入name
+                # =========處理傳入需求==========
+
+                # =========處理傳入需求==========
+
                 #for c in form_in:
                         #if c !='submit' and c !='csrfmiddlewaretoken' and len(form_in[c]) != 0:
                                 #分單次搜索根多次搜索 分開查詢
+
+
                                 #pass
-                end = form_in
-                end1 = str(use_info)
-                return render(request,'match/end.html',{'end':end,'end1':end1})
+                end = str(form_in)
+                return render(request,'match/end.html',{'end':end})
         else:
                 form = SearchForm()
                 return render(request,'match/test.html',{'test':form})

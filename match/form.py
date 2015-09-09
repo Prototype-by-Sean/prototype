@@ -6,6 +6,8 @@ from .models import Member
 # =========ET=========
 class SearchForm(forms.ModelForm):
     pic = forms.BooleanField()
+    find_girl = forms.BooleanField()
+    find_boy = forms.BooleanField()
     height_max = forms.IntegerField(max_value=300,min_value=50)
     height_min = forms.IntegerField(max_value=300,min_value=50)
     weight_max = forms.IntegerField(max_value=300,min_value=20)
@@ -15,6 +17,8 @@ class SearchForm(forms.ModelForm):
     class Meta:
         model = Member
         fields = ('pic',
+                  'find_girl',
+                  'find_boy',
                   'height_min','height_max',
                   'weight_min','weight_max',
                   'age_min','age_max',
