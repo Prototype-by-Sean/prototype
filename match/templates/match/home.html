@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends 'match/base.html' %}
 
-{% for member in members %}
-    {{ member }}
-{% endfor %}
-
-</body>
-</html>
+{% block body %}
+    {{ block.super }}
+    {% block content %}
+        <div class="container">
+            {% for member in members %}
+                {{ member }}
+            {% endfor %}
+        </div>
+    {% endblock content %}
+{% endblock body %}
