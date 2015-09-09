@@ -33,7 +33,7 @@ def search_view(request):
 
 
                                 #pass
-                end = str(form_in)
+                end = form_in['find_girl']
                 return render(request,'match/end.html',{'end':end})
         else:
                 form = SearchForm()
