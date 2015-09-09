@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
 from datetime import date
 from django.views.generic import ListView
@@ -24,9 +25,9 @@ def search_view(request):
                 use_info = request.user
                 #for c in form_in:
                         #if c !='submit' and c !='csrfmiddlewaretoken' and len(form_in[c]) != 0:
-                                #¤À³æ¦¸·j¯Á®Ú¦h¦¸·j¯Á ¤À¶}¬d¸ß
+                                #åˆ†å–®æ¬¡æœç´¢æ ¹å¤šæ¬¡æœç´¢ åˆ†é–‹æŸ¥è©¢
                                 #pass
-                end = str(form_in)
+                end = form_in
                 end1 = str(use_info)
                 return render(request,'match/end.html',{'end':end,'end1':end1})
         else:
