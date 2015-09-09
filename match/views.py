@@ -23,33 +23,37 @@ def search_view(request):
         if request.method =='POST':
                 form_in = request.POST          # 字典型態{'a':[1,2],'b':[5,6],'c':[]}
                 # use_info = str(request.user)    # 傳入name
-                ttt = 0
+                test_girl = 0
+                test_boy = 0
                 # =========處理傳入需求==========
                 try:
                         if len(form_in['find_girl']) > 0:
-                                try:
-                                        if len(form_in['find_boy'])>0:
-                                                ttt = 1
-                                except:
-                                        ttt = 2
+                                test_girl = 1
                 except:
-                        ttt = 4
+                        pass
 
                 try:
                         if len(form_in['find_boy'])>0:
-                                try:
-                                        if len(form_in['find_girl']) > 0:
-                                                ttt = 1
-                                except:
-                                        ttt = 3
+                                test_boy = 1
                 except:
-                        ttt = 4
-                # =========處理傳入需求==========
+                        pass
+
+                if test_girl == 1:
+                        if test_boy == 1:
+                                ttt = 1
+                        else:
+                                ttt = 2
+                else:
+                        if test_boy == 1:
+                                ttt = 3
+                        else:
+                                ttt = 4
+
 
 
 
                 # dict_in = Member.objects.filter(age__in = form_in['age'])
-                end = form_in['find_girl']
+                end = ttt
                 return render(request,'match/end.html',{'end':end})
         else:
                 form = SearchForm()
