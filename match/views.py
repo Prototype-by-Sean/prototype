@@ -47,6 +47,7 @@ def search_view(request):
                 # =========處理傳入需求==========
 
 
+
                 # dict_in = Member.objects.filter(age__in = form_in['age'])
                 end = form_in['find_girl']
                 return render(request,'match/end.html',{'end':end})
