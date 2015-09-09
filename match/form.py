@@ -8,12 +8,12 @@ class SearchForm(forms.ModelForm):
     pic = forms.BooleanField()
     find_girl = forms.BooleanField()
     find_boy = forms.BooleanField()
-    height_max = forms.IntegerField(max_value=300,min_value=50)
     height_min = forms.IntegerField(max_value=300,min_value=50)
-    weight_max = forms.IntegerField(max_value=300,min_value=20)
+    height_max = forms.IntegerField(max_value=300,min_value=height_min)
     weight_min = forms.IntegerField(max_value=300,min_value=20)
-    age_max = forms.IntegerField()
+    weight_max = forms.IntegerField(max_value=300,min_value=weight_min)
     age_min = forms.IntegerField()
+    age_max = forms.IntegerField(min_value=age_min)
     class Meta:
         model = Member
         fields = ('pic',
