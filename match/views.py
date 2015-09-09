@@ -28,7 +28,7 @@ def search_view(request):
                                 #分單次搜索根多次搜索 分開查詢
                                 #pass
                 end = form_in
-                end1 = use_info.objects.all().values()
+                end1 = use_info
                 return render(request,'match/end.html',{'end':end,'end1':end1})
         else:
                 form = SearchForm()
