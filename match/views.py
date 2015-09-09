@@ -21,7 +21,7 @@ class HomePageView(ListView):
 # =======ET=======
 def search_view(request):
         if request.method =='POST':
-                form_in = request.POST
+                form_in = request.POST          # 字典型態
                 use_info = request.user
                 #for c in form_in:
                         #if c !='submit' and c !='csrfmiddlewaretoken' and len(form_in[c]) != 0:
