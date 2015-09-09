@@ -22,7 +22,6 @@ class HomePageView(ListView):
 def search_view(request):
         if request.method =='POST':
                 form_in = request.POST          # 字典型態{'a':[1,2],'b':[5,6],'c':[]}
-                form_in = {'age':[26,27]}
                 use_info = str(request.user)    # 傳入name
                 ttt = 0
                 # =========處理傳入需求==========
@@ -49,7 +48,7 @@ def search_view(request):
 
 
                 dict_in = Member.objects.filter(age__in = form_in['age'])
-                end = ttt
+                end = form_in
                 return render(request,'match/end.html',{'end':end})
         else:
                 form = SearchForm()
