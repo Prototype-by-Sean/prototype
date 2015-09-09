@@ -25,12 +25,12 @@ def search_view(request):
                 use_name = str(request.user)    # 傳入name
                 # =========生成年齡範圍==========
                 #生成 age_range:[10,11,12,13,14,15] 若無設定則生成 0 到 100
-                if len(form_in['age_max'][0]) > 0 and len(form_in['age_min'][0]) > 0:
-                        form_in['age_range'] = list(range(int(form_in['age_min'][0]),int(form_in['age_max'][0])+1))
-                elif len(form_in['age_max'][0]) > 0:
-                        form_in['age_range'] = list(range(0,int(form_in['age_max'][0])+1))
-                elif len(form_in['age_min'][0]) > 0:
-                        form_in['age_range'] = list(range(form_in['age_min'][0],100))
+                if len(form_in['age_max']) > 0 and len(form_in['age_min']) > 0:
+                        form_in['age_range'] = list(range(int(form_in['age_min']),int(form_in['age_max'])+1))
+                elif len(form_in['age_max']) > 0:
+                        form_in['age_range'] = list(range(0,int(form_in['age_max'])+1))
+                elif len(form_in['age_min']) > 0:
+                        form_in['age_range'] = list(range(form_in['age_min'],100))
                 else:
                         form_in['age_range'] = list(range(0,100))
                 # =========生成年齡範圍==========
