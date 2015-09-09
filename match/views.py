@@ -24,27 +24,26 @@ def search_view(request):
                 form_in = request.POST          # 字典型態{'a':[1,2],'b':[5,6],'c':[]}
                 form_in = {'age':[26,27]}
                 use_info = str(request.user)    # 傳入name
+                ttt = 0
                 # =========處理傳入需求==========
                 try:
-                        pass
-                        form_in['find_girl']
+                        print(form_in['find_girl'])
                         try:
-                             pass
-                             form_in['find_boy']
+                             print(form_in['find_boy'])
+                             ttt = 1
                         except:
-                                pass
-                                dict_in = Member.objects.filter(age__in = form_in['age'])
+                                ttt = 2
                 except:
-                        pass
+                        try:
+                              print(form_in['find_boy'])
+                              ttt = 3
+                        except:
+                                ttt = 4
                 # =========處理傳入需求==========
 
-                #for c in form_in:
-                        #if c !='submit' and c !='csrfmiddlewaretoken' and len(form_in[c]) != 0:
-                                #分單次搜索根多次搜索 分開查詢
 
                 dict_in = Member.objects.filter(age__in = form_in['age'])
-                                #pass
-                end = dict_in
+                end = ttt
                 return render(request,'match/end.html',{'end':end})
         else:
                 form = SearchForm()
