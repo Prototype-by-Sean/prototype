@@ -69,33 +69,33 @@ def search_view(request):
                 if my_biological_sex == '男':
                         if test_biological_sex == 1 :
                                 # 男女都撈(只撈性向
-                                qs_set = filters_view.find_q_set(2,3,4,6)
+                                qs_set = filters_view.find_q_set(Member,2,3,4,6)
                         if test_biological_sex == 2 :
                                 # 撈女生
-                                qs_set = filters_view.find_q_set(4,6)
+                                qs_set = filters_view.find_q_set(Member,4,6)
                         if test_biological_sex == 3 :
                                 # 撈男生
-                                qs_set = filters_view.find_q_set(2,3)
+                                qs_set = filters_view.find_q_set(Member,2,3)
                 elif my_biological_sex == '女':
                         if test_biological_sex == 1 :
                                 # 男女都撈(只撈性向
-                                qs_set = filters_view.find_q_set(1,3,5,6)
+                                qs_set = filters_view.find_q_set(Member,1,3,5,6)
                         if test_biological_sex == 2 :
                                 # 撈女生
-                                qs_set = filters_view.find_q_set(5,6)
+                                qs_set = filters_view.find_q_set(Member,5,6)
                         if test_biological_sex == 3 :
                                 # 撈男生
-                                qs_set = filters_view.find_q_set(1,3)
+                                qs_set = filters_view.find_q_set(Member,1,3)
                 else:
                         if test_biological_sex == 1 :
                                 # 男女都撈(只撈性向
-                                qs_set = filters_view.find_q_set(1,4,2,5,3,6)
+                                qs_set = filters_view.find_q_set(Member,1,4,2,5,3,6)
                         if test_biological_sex == 2 :
                                 # 撈女生
-                                qs_set = filters_view.find_q_set(4,6)
+                                qs_set = filters_view.find_q_set(Member,4,6)
                         if test_biological_sex == 3 :
                                 # 撈男生
-                                qs_set = filters_view.find_q_set(1,3)
+                                qs_set = filters_view.find_q_set(Member,1,3)
                 # ======生成搜索用queryset======
 
 

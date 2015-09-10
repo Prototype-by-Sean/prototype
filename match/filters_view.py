@@ -3,7 +3,7 @@
 
 def find_q_set(model,*args):
     q_set = []
-    q_set_temp = None
+    q_set_temp = []
     for c in args:
         # ========篩選需求=========
         if c == 1:
