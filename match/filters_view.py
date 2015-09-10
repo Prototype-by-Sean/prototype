@@ -21,7 +21,7 @@ def find_q_set(model, *args):
         # ========篩選需求=========
 
         # ========寫入結果=========
-        q_set = q_set + list[q_set_temp.values()]
+        q_set = q_set + list(q_set_temp.values())
         # ========寫入結果=========
     return q_set
 # ========從資料庫撈取符合對象=========可同時輸入多筆代號   結果會疊加  ex: find_q_set(1,4) 結果為 [異性男] 跟 [異性女] 集合
