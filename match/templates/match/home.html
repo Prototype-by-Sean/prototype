@@ -1,15 +1,70 @@
 {% extends 'match/base.html' %}
-
+{% block extra_head %}
+    <!--載入字體-->
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One&subset=latin,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400;300' rel='stylesheet' type='text/css'>
+    <!--主頁css-->
+    <link href="/static/match/css/home.css" rel="stylesheet">
+{% endblock extra_head %}
 {% block body %}
+    <style>
+    #project_1{
+        background-image:url('/static/proto_demo/image/designer/bennylin/rocket%20alarm_1.png');
+    }
+    #project_2{
+        background-image: url('/static/proto_demo/image/designer/bennylin/apron_1.png');
+    }
+    #project_3{
+        background-image: url('/static/proto_demo/image/designer/bennylin/eco%20broom_2.png');
+    }
+    #project_4{
+        background-image: url('/static/proto_demo/image/designer/bennylin/earplugs_1.png');
+    }
+    #project_5{
+    background-image: url('');
+    }
+    #project_6{
+    background-image: url('');
+    }
+    </style>
+
     {% block nav %}
         {{ block.super }}
-    {% endblock %}
+    {% endblock nav %}
+
     {% block content %}
-        <div class="container">
-            {% for member in members %}
-                <img src="{{ member.profile_pic.url }}" style="height: 10%; width: 10%"/>
-            {% endfor %}
+        <div class="jumbotron"></div>
+            <div class="container" id="headline">
+            <h1>找尋夢想中的那一位</h1>
+            <h4>副標題還在想...</h4>
         </div>
 
+        <!--會員畫廊-->
+        <div class="mambers container">
+            <!--抬頭/標題/圖示-->
+            <div id="member-head">
+                <div class="col-md-12 col-xs-12">
+                    <h2><i class="glyphicon glyphicon-th"></i></h2>
+                </div>
+            </div>
+
+            <!--項目顯示-->
+            <div class="row membersrow">
+                {% for member in members %}
+                    <div class="col-md-3 col-sm-3 col-xs-3 frame">
+                        <a href="#" class="member_detail">
+                        <div class="innerframe"  id="members" style="background-image: url('{{ member.profile_pic.url }}')">
+
+                            <div id="member_description">   <!--只繼承frame? 為什麼??-->
+                                <h3>{{ member.user.first_name }}</h3>
+                                <h4>{{ member.location }}<br><br><br><br></h4>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     {% endblock content %}
 {% endblock body %}

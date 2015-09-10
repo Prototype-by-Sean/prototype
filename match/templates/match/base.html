@@ -8,16 +8,17 @@
     </title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!--script-- type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script-->
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+
+    {% block nav_css %}
+        <link href="/static/match/css/nav.css" rel="stylesheet">
+    {% endblock nav_css %}
+    {% block nav_js %}
+        <script src="/static/match/js/nav.js"></script>
+    {% endblock nav_js %}
 
     {% block extra_head %}
-        {% block nav_css %}
-            <link href="/static/proto_demo/css/nav.css" rel="stylesheet">
-        {% endblock nav_css %}
-
-        {% block nav_js %}
-            <script src="/static/proto_demo/js/nav.js"></script>
-        {% endblock nav_js %}
     {% endblock extra_head %}
 </head>
 
@@ -25,7 +26,7 @@
     {% block body %}
         {% block nav %}
             <div class = "nav colo">
-                <p class = "logo_f">M.A.T.C.H</p><!--LOGO-->
+                <p class = "logo_f">Matcher</p><!--LOGO-->
             </div>
             <form class = "nav_mid">
             </form>
