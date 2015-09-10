@@ -65,6 +65,7 @@ def search_view(request):
 
 
                 # ======生成搜索用queryset======
+                # 已轉換為清單內含字典格式(純PY)    ex : [{'id': 1, 'level_id': 2, 'job_id': 2, 'name': 'ET'}, {'id': 2, 'level_id': 2, 'job.....
                 if my_biological_sex == '男':
                         if test_biological_sex == 1 :
                                 # 男女都撈(只撈性向

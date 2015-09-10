@@ -3,7 +3,8 @@ from models import Member
 
 
 def find_q_set(*args):
-    q_set = 0
+    q_set = []
+    q_set_temp = None
     for c in args:
         # ========篩選需求=========
         if c == 1:
@@ -21,10 +22,7 @@ def find_q_set(*args):
         # ========篩選需求=========
 
         # ========寫入結果=========
-        if q_set == 0:
-            q_set = q_set_temp
-        else:
-            q_set = q_set | q_set_temp
+        q_set = q_set + q_set_temp.values()
         # ========寫入結果=========
     return q_set
 # ========從資料庫撈取符合對象=========可同時輸入多筆代號   結果會疊加  ex: find_q_set(1,4) 結果為 [異性男] 跟 [異性女] 集合
