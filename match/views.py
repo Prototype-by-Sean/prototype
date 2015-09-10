@@ -119,7 +119,7 @@ def search_view(request):
 
 
                 # dict_in = Member.objects.filter(age__in = form_in['age'])
-                end = Member.objects.all().values()
+                end = qs_set[1]
                 return render(request,'match/end.html',{'end':end})
         else:
                 form = SearchForm()
