@@ -1,12 +1,15 @@
 {% extends 'match/base.html' %}
 
 {% block body %}
-    {{ block.super }}
+    {% block nav %}
+        {{ block.super }}
+    {% endblock %}
     {% block content %}
         <div class="container">
             {% for member in members %}
-                {{ member }}
+                <img src="{{ member.profile_pic.url }}" style="height: 10%; width: 10%"/>
             {% endfor %}
         </div>
+
     {% endblock content %}
 {% endblock body %}

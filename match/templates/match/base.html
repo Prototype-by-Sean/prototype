@@ -8,7 +8,7 @@
     </title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <!--script-- type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script-->
 
     {% block extra_head %}
         {% block nav_css %}
@@ -34,15 +34,13 @@
                 <p class = "nav_right_f">sign up</p>
                 <div class = "switch">
                     <p class = "nav_right_f fast_match_show">快速配對</p>
-                    <i class="fa fa-bolt fa-lg fast_match nav_right_f" style="color: whitesmoke">閃</i>
+                    <i class="fa fa-bolt fa-lg fast_match nav_right_f" style="color: whitesmoke"></i>
                 </div>
             </div>
 
             <div class="login">
                 <div class="cancel">
-                    叉
-                </div>
-                <div class="login_in">
+                    <i class="fa fa-times"></i>
                 </div>
             </div>
         {% endblock nav %}
@@ -53,7 +51,7 @@
     {% endblock body %}
 
     {% block js %}
-
     {% endblock js %}
+
 </body>
 </html>
