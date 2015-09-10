@@ -4,6 +4,7 @@ from datetime import date
 from django.views.generic import ListView
 from models import Member
 from form import SearchForm
+import filters_view
 # Create your views here.
 
 
@@ -21,23 +22,20 @@ class HomePageView(ListView):
 # =======ET=======
 def search_view(request):
         if request.method =='POST':
-                form_in = request.POST          # 字典型態{'a':[1,2],'b':[5,6],'c':[]}
-                use_name = str(request.user)    # 傳入name
-                # =========生成年齡範圍==========
-                #生成 age_range:[10,11,12,13,14,15] 若無設定則生成 0 到 100
-                if len(form_in['age_max']) > 0 and len(form_in['age_min']) > 0:
-                        form_in['age_range'] = list(range(int(form_in['age_min']),int(form_in['age_max'])+1))
-                elif len(form_in['age_max']) > 0:
-                        form_in['age_range'] = list(range(0,int(form_in['age_max'])+1))
-                elif len(form_in['age_min']) > 0:
-                        form_in['age_range'] = list(range(form_in['age_min'],100))
-                else:
-                        form_in['age_range'] = list(range(0,100))
-                # =========生成年齡範圍==========
+                form_in = request.POST
+                # 字典型態{'a':[1,2],'b':[5,6],'c':[]}
+
+
+                #======定義使用者本身性別======
+                try:
+                        my_biological_sex = Member.objects.filter(user = str(request.user))
+                except:
+                        my_biological_sex = None
+                #======定義使用者本身性別======
 
 
                 # =========分析找男女==========
-                # 1:男女  2:女  3:男  4:都不選
+                # 輸出 test_biological_sex        1:男女都選或都不選  2:女  3:男
                 test_girl = 0
                 test_boy = 0
                 try:
@@ -61,8 +59,61 @@ def search_view(request):
                         if test_boy == 1:
                                 test_biological_sex = 3
                         else:
-                                test_biological_sex = 4
+                                test_biological_sex = 1
+                del test_girl,test_boy
                 # =========分析找男女==========
+
+
+                # ======生成搜索用queryset======
+                if my_biological_sex == '男':
+                        if test_biological_sex == 1 :
+                                # 男女都撈(只撈性向
+                                qs_set = filters_view.find_q_set(2,3,4,6)
+                        if test_biological_sex == 2 :
+                                # 撈女生
+                                qs_set = filters_view.find_q_set(4,6)
+                        if test_biological_sex == 3 :
+                                # 撈男生
+                                qs_set = filters_view.find_q_set(2,3)
+                elif my_biological_sex == '女':
+                        if test_biological_sex == 1 :
+                                # 男女都撈(只撈性向
+                                qs_set = filters_view.find_q_set(1,3,5,6)
+                        if test_biological_sex == 2 :
+                                # 撈女生
+                                qs_set = filters_view.find_q_set(5,6)
+                        if test_biological_sex == 3 :
+                                # 撈男生
+                                qs_set = filters_view.find_q_set(1,3)
+                else:
+                        if test_biological_sex == 1 :
+                                # 男女都撈(只撈性向
+                                qs_set = filters_view.find_q_set(1,4,2,5,3,6)
+                        if test_biological_sex == 2 :
+                                # 撈女生
+                                qs_set = filters_view.find_q_set(4,6)
+                        if test_biological_sex == 3 :
+                                # 撈男生
+                                qs_set = filters_view.find_q_set(1,3)
+                # ======生成搜索用queryset======
+
+
+
+
+                # =========生成年齡範圍==========
+                # 生成 age_range = [10,11,12,13,14,15] 若無設定則生成 0 到 100
+                if len(form_in['age_max']) > 0 and len(form_in['age_min']) > 0:
+                        age_range = list(range(int(form_in['age_min']),int(form_in['age_max'])+1))
+                elif len(form_in['age_max']) > 0:
+                        age_range = list(range(0,int(form_in['age_max'])+1))
+                elif len(form_in['age_min']) > 0:
+                        age_range = list(range(form_in['age_min'],100))
+                else:
+                        age_range = list(range(0,100))
+                # =========生成年齡範圍==========
+
+
+
 
 
 
