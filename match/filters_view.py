@@ -1,24 +1,23 @@
 # -*- coding: utf-8 -*-
-from models import Member
 
 
-def find_q_set(*args):
+def find_q_set(model,*args):
     q_set = []
     q_set_temp = None
     for c in args:
         # ========篩選需求=========
         if c == 1:
-            q_set_temp = Member.objects.filter(biological_sex='男', sexuality='異性')
+            q_set_temp = model.objects.filter(biological_sex='男', sexuality='異性')
         elif c == 2:
-            q_set_temp = Member.objects.filter(biological_sex='男', sexuality='同性')
+            q_set_temp = model.objects.filter(biological_sex='男', sexuality='同性')
         elif c == 3:
-            q_set_temp = Member.objects.filter(biological_sex='男', sexuality='雙性')
+            q_set_temp = model.objects.filter(biological_sex='男', sexuality='雙性')
         elif c == 4:
-            q_set_temp = Member.objects.filter(biological_sex='女', sexuality='異性')
+            q_set_temp = model.objects.filter(biological_sex='女', sexuality='異性')
         elif c == 5:
-            q_set_temp = Member.objects.filter(biological_sex='女', sexuality='同性')
+            q_set_temp = model.objects.filter(biological_sex='女', sexuality='同性')
         elif c == 6:
-            q_set_temp = Member.objects.filter(biological_sex='女', sexuality='雙性')
+            q_set_temp = model.objects.filter(biological_sex='女', sexuality='雙性')
         # ========篩選需求=========
 
         # ========寫入結果=========
