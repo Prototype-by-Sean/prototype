@@ -96,19 +96,20 @@ def search_view(request):
                 # ======生成搜索用queryset======
                 # =========生成年齡範圍==========
                 # 生成 age_range = [10,11,12,13,14,15] 若無設定則生成 0 到 100
-                if len(form_in['age_max']) > 0 and len(form_in['age_min']) > 0:
-                        age_range = list(range(int(form_in['age_min']),int(form_in['age_max'])+1))
-                elif len(form_in['age_max']) > 0:
-                        age_range = list(range(0,int(form_in['age_max'])+1))
-                elif len(form_in['age_min']) > 0:
-                        age_range = list(range(form_in['age_min'], 100))
+                if len(form_in['age_min']) == 0:
+                        age_min = 0
                 else:
-                        age_range = list(range(0,100))
+                        age_min = int(form_in['age_min'])
+                if len(form_in['age_max']) == 0:
+                        age_max = 150
+                else:
+                        age_max = int(form_in['age_max'])
+                q_set = filters_view.filter_age(Member,q_set,age_min,age_max)
                 # =========生成年齡範圍==========
 
                 # dict_in = Member.objects.filter(age__in = form_in['age'])
                 end = form_in['age_min']
-                end1 = filters_view.filter_age(Member,q_set,int(form_in['age_min']),int(form_in['age_max']))
+                end1 = q_set
                 return render(request,'match/end.html',{'end': end,'end1':end1})
         else:
                 form = SearchForm()
