@@ -107,8 +107,8 @@ def search_view(request):
                 # =========生成年齡範圍==========
 
                 # dict_in = Member.objects.filter(age__in = form_in['age'])
-                end = str(q_set)
-                end1 = filters_view.filter_age(q_set,15,18)
+                end = form_in['age_min']
+                end1 = filters_view.filter_age(Member,q_set,int(form_in['age_min']),int(form_in['age_max']))
                 return render(request,'match/end.html',{'end': end,'end1':end1})
         else:
                 form = SearchForm()
