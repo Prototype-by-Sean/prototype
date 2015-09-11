@@ -70,3 +70,13 @@ def filter_height(model, q_set, *args):
         else:
             q_set_out[c] = q_set[c]
     return q_set_out
+
+
+def filter_blood_type(model, q_set, blood_type_list):
+    q_set_out = {}
+    for c in q_set:
+        if model.objects.get(id=int(c)).blood_type_id in blood_type_list:
+            q_set_out[c] = q_set[c] + 1
+        else:
+            q_set_out[c] = q_set[c]
+    return q_set_out

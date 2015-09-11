@@ -132,10 +132,12 @@ def search_view(request):
         # ====生成體重範圍丟入filter=====
         # dict_in = Member.objects.filter(age__in = form_in['age'])
 
+        blood_type_list = request.POST.getlist('blood_type') #清單，血型代號
+        q_set = filters_view.filter_blood_type(Member,q_set,blood_type_list)
 
 
         end = q_set
-        ttt = request.POST.getlist('blood_type') #清單，血型代號
+
         end1 = Member.objects.get(id = 9).blood_type_id
         return render(request,'match/end.html',{'end': end,'end1':end1})
     else:
