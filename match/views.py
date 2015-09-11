@@ -94,18 +94,43 @@ def search_view(request):
                                 # 撈男生
                                 q_set = filters_view.find_q_set(Member, 1, 3)
                 # ======生成搜索用queryset======
-                # =========生成年齡範圍==========
+                # ====生成年齡範圍丟入filter=====
                 # 生成 age_range = [10,11,12,13,14,15] 若無設定則生成 0 到 100
                 if len(form_in['age_min']) == 0:
                         age_min = 0
                 else:
                         age_min = int(form_in['age_min'])
                 if len(form_in['age_max']) == 0:
-                        age_max = 150
+                        age_max = 300
                 else:
                         age_max = int(form_in['age_max'])
-                q_set = filters_view.filter_age(Member,q_set,age_min,age_max)
-                # =========生成年齡範圍==========
+                q_set = filters_view.filter_range(Member,q_set,age_min,age_max)
+                # ====生成年齡範圍丟入filter=====
+                # ====生成身高範圍丟入filter=====
+                if len(form_in['height_min']) == 0:
+                        height_min = 0
+                else:
+                        height_min = int(form_in['height_min'])
+                if len(form_in['height_max']) == 0:
+                        height_max = 300
+                else:
+                        height_max = int(form_in['height_max'])
+                q_set = filters_view.filter_range(Member,q_set,height_min,height_max)
+                # ====生成身高範圍丟入filter=====
+                # ====生成體重範圍丟入filter=====
+                if len(form_in['weight_min']) == 0:
+                        weight_min = 0
+                else:
+                        weight_min = int(form_in['weight_min'])
+                if len(form_in['weight_max']) == 0:
+                        weight_max = 300
+                else:
+                        weight_max = int(form_in['weight_max'])
+                q_set = filters_view.filter_range(Member,q_set,weight_min,weight_max)
+                # ====生成體重範圍丟入filter=====
+
+
+
 
                 # dict_in = Member.objects.filter(age__in = form_in['age'])
                 end = form_in['age_min']

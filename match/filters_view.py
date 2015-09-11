@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from models import Member
+
+# ========從資料庫撈取符合對象=========可同時輸入多筆代號   結果會疊加  ex: find_q_set(1,4) 結果為 [異性男] 跟 [異性女] 集合
 
 
 def find_q_set(model, *args):
@@ -27,10 +28,12 @@ def find_q_set(model, *args):
             q_set[c2] = 0
         # ========寫入結果=========
     return q_set
-# ========從資料庫撈取符合對象=========可同時輸入多筆代號   結果會疊加  ex: find_q_set(1,4) 結果為 [異性男] 跟 [異性女] 集合
 
 
-def filter_age(model,q_set, *args):
+# 範圍性過濾器,輸入model,優先權字典,最大最小值,結果為新的優先權字典
+
+
+def filter_range(model, q_set, *args):
     # qs_set  為一個優先權字典 {'id1' : 2, 'id2' : 1.....
     # args  為年齡上下限
     args = sorted(args)
