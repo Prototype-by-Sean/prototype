@@ -60,12 +60,13 @@ def search_view(request):
                                 test_biological_sex = 3
                         else:
                                 test_biological_sex = 1
-                del test_girl,test_boy
+                del test_girl, test_boy
                 # =========分析找男女==========
 
 
                 # ======生成搜索用queryset======
                 # 已轉換為清單內含字典格式(純PY)    ex : [{'id': 1, 'level_id': 2, 'job_id': 2, 'name': 'ET'}, {'id': 2, 'level_id': 2, 'job.....
+                qs_set = None
                 if my_biological_sex == '男':
                         if test_biological_sex == 1 :
                                 # 男女都撈(只撈性向
@@ -119,7 +120,7 @@ def search_view(request):
 
 
                 # dict_in = Member.objects.filter(age__in = form_in['age'])
-                end = qs_set[1]
+                end = qs_set
                 return render(request,'match/end.html',{'end':end})
         else:
                 form = SearchForm()
