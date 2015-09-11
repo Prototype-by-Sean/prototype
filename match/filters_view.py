@@ -37,4 +37,5 @@ def filter_age(qs_set, *args):
     for c in qs_set:
         if Member.objects.get(id=int(c)).age in range(args[0], args[1]+1):
             qs_set[c] += 1
+    qs_set['555'] = 3
     return qs_set
