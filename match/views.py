@@ -132,7 +132,7 @@ def search_view(request):
         # ====生成體重範圍丟入filter=====
         # dict_in = Member.objects.filter(age__in = form_in['age'])
         end = str(form_in)
-        end1 = q_set
+        end1 = form_in['blood_type']
         return render(request,'match/end.html',{'end': end,'end1':end1})
     else:
         form = SearchForm()
