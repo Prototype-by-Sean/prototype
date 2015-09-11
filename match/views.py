@@ -131,7 +131,7 @@ def search_view(request):
             q_set = filters_view.filter_weight(Member,q_set,weight_min,weight_max)
         # ====生成體重範圍丟入filter=====
         # dict_in = Member.objects.filter(age__in = form_in['age'])
-        end = request.POST
+        end = q_set
         ttt = request.__dict__
         end1 = ttt
         return render(request,'match/end.html',{'end': end,'end1':end1})
