@@ -136,7 +136,7 @@ def search_view(request):
 
         end = q_set
         ttt = request.POST.getlist('blood_type') #清單，血型代號
-        end1 = Member.objects.get(id = 9).blood_type
+        end1 = Member.objects.get(id = 9).blood_type_id
         return render(request,'match/end.html',{'end': end,'end1':end1})
     else:
         form = SearchForm()
