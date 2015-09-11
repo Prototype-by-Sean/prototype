@@ -22,7 +22,7 @@ def find_q_set(model, *args):
 
         # ========寫入結果=========
         for c1 in q_set_temp:
-            c2 = str(c1['id'])[:-1]
+            c2 = str(c1['id'])
             q_set[c2] = 0
         # ========寫入結果=========
         form = q_set
