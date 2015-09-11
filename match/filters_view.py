@@ -45,9 +45,10 @@ def filter_age(model, q_set, *args):
             q_set_out[c] = q_set[c]
     return q_set_out
 
+
 def filter_weight(model, q_set, *args):
     # qs_set  為一個優先權字典 {'id1' : 2, 'id2' : 1.....
-    # args  為年齡上下限
+    # args  為體重上下限
     args = sorted(args)
     q_set_out = {}
     for c in q_set:
@@ -57,9 +58,10 @@ def filter_weight(model, q_set, *args):
             q_set_out[c] = q_set[c]
     return q_set_out
 
+
 def filter_height(model, q_set, *args):
     # qs_set  為一個優先權字典 {'id1' : 2, 'id2' : 1.....
-    # args  為年齡上下限
+    # args  為身高上下限
     args = sorted(args)
     q_set_out = {}
     for c in q_set:
