@@ -62,37 +62,37 @@ def search_view(request):
                 # =========分析找男女==========
                 # ======生成搜索用queryset======
                 # 已轉換為清單內含字典格式(純PY)    ex : [{'id': 1, 'level_id': 2, 'job_id': 2, 'n.....
-                qs_set = None
+                q_set = None
                 if my_biological_sex == '男':
                         if test_biological_sex == 1:
                                 # 男女都撈(只撈性向
-                                qs_set = filters_view.find_q_set(Member, 2, 3, 4, 6)
+                                q_set = filters_view.find_q_set(Member, 2, 3, 4, 6)
                         if test_biological_sex == 2:
                                 # 撈女生
-                                qs_set = filters_view.find_q_set(Member, 4, 6)
+                                q_set = filters_view.find_q_set(Member, 4, 6)
                         if test_biological_sex == 3:
                                 # 撈男生
-                                qs_set = filters_view.find_q_set(Member, 2, 3)
+                                q_set = filters_view.find_q_set(Member, 2, 3)
                 elif my_biological_sex == '女':
                         if test_biological_sex == 1:
                                 # 男女都撈(只撈性向
-                                qs_set = filters_view.find_q_set(Member, 1, 3, 5, 6)
+                                q_set = filters_view.find_q_set(Member, 1, 3, 5, 6)
                         if test_biological_sex == 2:
                                 # 撈女生
-                                qs_set = filters_view.find_q_set(Member, 5, 6)
+                                q_set = filters_view.find_q_set(Member, 5, 6)
                         if test_biological_sex == 3:
                                 # 撈男生
-                                qs_set = filters_view.find_q_set(Member, 1, 3)
+                                q_set = filters_view.find_q_set(Member, 1, 3)
                 else:
                         if test_biological_sex == 1:
                                 # 男女都撈(只撈性向
-                                qs_set = filters_view.find_q_set(Member, 1, 4, 2, 5, 3, 6)
+                                q_set = filters_view.find_q_set(Member, 1, 4, 2, 5, 3, 6)
                         if test_biological_sex == 2:
                                 # 撈女生
-                                qs_set = filters_view.find_q_set(Member, 4, 6)
+                                q_set = filters_view.find_q_set(Member, 4, 6)
                         if test_biological_sex == 3:
                                 # 撈男生
-                                qs_set = filters_view.find_q_set(Member, 1, 3)
+                                q_set = filters_view.find_q_set(Member, 1, 3)
                 # ======生成搜索用queryset======
                 # =========生成年齡範圍==========
                 # 生成 age_range = [10,11,12,13,14,15] 若無設定則生成 0 到 100
@@ -107,7 +107,7 @@ def search_view(request):
                 # =========生成年齡範圍==========
 
                 # dict_in = Member.objects.filter(age__in = form_in['age'])
-                end = Member.objects.get(id= 7).age
+                end = q_set
                 return render(request,'match/end.html',{'end': end})
         else:
                 form = SearchForm()
