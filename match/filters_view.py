@@ -26,3 +26,10 @@ def find_q_set(model, *args):
         # ========寫入結果=========
     return qs_set
 # ========從資料庫撈取符合對象=========可同時輸入多筆代號   結果會疊加  ex: find_q_set(1,4) 結果為 [異性男] 跟 [異性女] 集合
+
+def filter_age(model,qs_set,*args):
+    # qs_set  為一個優先權字典 {'name':2, 'name2':1.....
+    # args  為年齡上下限
+    args = sorted(args)
+    for c in qs_set:
+        if
