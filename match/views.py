@@ -115,7 +115,7 @@ def search_view(request):
                         height_max = 300
                 else:
                         height_max = int(form_in['height_max'])
-                q_set = filters_view.filter_range(Member,q_set,height_min,height_max)
+                q_set = filters_view.filter_height(Member,q_set,height_min,height_max)
                 # ====生成身高範圍丟入filter=====
                 # ====生成體重範圍丟入filter=====
                 if len(form_in['weight_min']) == 0:
@@ -126,7 +126,7 @@ def search_view(request):
                         weight_max = 300
                 else:
                         weight_max = int(form_in['weight_max'])
-                q_set = filters_view.filter_range(Member,q_set,weight_min,weight_max)
+                q_set = filters_view.filter_weight(Member,q_set,weight_min,weight_max)
                 # ====生成體重範圍丟入filter=====
 
 
