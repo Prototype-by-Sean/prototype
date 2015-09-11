@@ -40,5 +40,4 @@ def filter_age(q_set, *args):
             q_set_out[c] = q_set[c] + 1
         else:
             q_set_out[c] = q_set[c]
-    q_set_out['555'] = 3
     return q_set_out
