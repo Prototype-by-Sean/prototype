@@ -133,7 +133,7 @@ def search_view(request):
         # dict_in = Member.objects.filter(age__in = form_in['age'])
         end = request.POST
         ttt = request.__dict__
-        end1 = len(ttt['blood_type'])
+        end1 = ttt
         return render(request,'match/end.html',{'end': end,'end1':end1})
     else:
         form = SearchForm()
