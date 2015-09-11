@@ -33,13 +33,37 @@ def find_q_set(model, *args):
 # 範圍性過濾器,輸入model,優先權字典,最大最小值,結果為新的優先權字典
 
 
-def filter_range(model, q_set, *args):
+def filter_age(model, q_set, *args):
     # qs_set  為一個優先權字典 {'id1' : 2, 'id2' : 1.....
     # args  為年齡上下限
     args = sorted(args)
     q_set_out = {}
     for c in q_set:
         if model.objects.get(id=int(c)).age in range(args[0], args[1]+1):
+            q_set_out[c] = q_set[c] + 1
+        else:
+            q_set_out[c] = q_set[c]
+    return q_set_out
+
+def filter_weight(model, q_set, *args):
+    # qs_set  為一個優先權字典 {'id1' : 2, 'id2' : 1.....
+    # args  為年齡上下限
+    args = sorted(args)
+    q_set_out = {}
+    for c in q_set:
+        if model.objects.get(id=int(c)).weight in range(args[0], args[1]+1):
+            q_set_out[c] = q_set[c] + 1
+        else:
+            q_set_out[c] = q_set[c]
+    return q_set_out
+
+def filter_height(model, q_set, *args):
+    # qs_set  為一個優先權字典 {'id1' : 2, 'id2' : 1.....
+    # args  為年齡上下限
+    args = sorted(args)
+    q_set_out = {}
+    for c in q_set:
+        if model.objects.get(id=int(c)).height in range(args[0], args[1]+1):
             q_set_out[c] = q_set[c] + 1
         else:
             q_set_out[c] = q_set[c]
