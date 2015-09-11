@@ -107,7 +107,7 @@ def search_view(request):
                 # =========生成年齡範圍==========
 
                 # dict_in = Member.objects.filter(age__in = form_in['age'])
-                end = str(qs_set)
+                end = Member.objects.get(user = 'prototype').age
                 return render(request,'match/end.html',{'end': end})
         else:
                 form = SearchForm()
