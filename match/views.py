@@ -132,10 +132,14 @@ def search_view(request):
         # ====生成體重範圍丟入filter=====
         # ==========過濾血型==========
         blood_type_list = request.POST.getlist('blood_type') #清單，血型代號
-        q_set = filters_view.filter_blood_type(Member,q_set,blood_type_list)
+        if blood_type_list != 0:
+            q_set = filters_view.filter_blood_type(Member,q_set,blood_type_list)
         # ==========過濾血型==========
+        # ==========過濾地點==========
         location_list = request.POST.getlist('location')
-        q_set = filters_view.filter_location(Member,q_set,location_list)
+        if location_list != 0:
+            q_set = filters_view.filter_location(Member,q_set,location_list)
+        # ==========過濾地點==========
 
 
         end = q_set
@@ -144,6 +148,6 @@ def search_view(request):
         return render(request,'match/end.html',{'end': end,'end1':end1})
     else:
         form = SearchForm()
-        ver1 = 'ver_view = %s' %(10023)
+        ver1 = 'ver_view = %s' %(10045)
         return render(request,'match/test.html',{'test': form,'ver1':ver1})
 # =======ET=======
