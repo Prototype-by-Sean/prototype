@@ -116,7 +116,7 @@ def search_view(request):
                 height_max = 300
             else:
                 height_max = int(form_in['height_max'])
-            q_set = filters_view.filter_height(Member,q_set,height_min,height_max)
+            q_set = filters_view.filter_height(Member, q_set, height_min, height_max)
         # ====生成身高範圍丟入filter=====
         # ====生成體重範圍丟入filter=====
         if len(form_in['weight_min']) != 0 or len(form_in['weight_max']) != 0:
@@ -131,23 +131,38 @@ def search_view(request):
             q_set = filters_view.filter_weight(Member,q_set,weight_min,weight_max)
         # ====生成體重範圍丟入filter=====
         # ==========過濾血型==========
-        blood_type_list = request.POST.getlist('blood_type') #清單，血型代號
-        if blood_type_list != 0:
-            q_set = filters_view.filter_blood_type(Member,q_set,blood_type_list)
+        blood_type_list = request.POST.getlist('blood_type')  # 清單，血型代號
+        if len(blood_type_list) != 0:
+            q_set = filters_view.filter_blood_type(Member, q_set, blood_type_list)
         # ==========過濾血型==========
         # ==========過濾地點==========
         location_list = request.POST.getlist('location')
-        if location_list != 0:
-            q_set = filters_view.filter_location(Member,q_set,location_list)
+        if len(location_list) != 0:
+            q_set = filters_view.filter_location(Member, q_set, location_list)
         # ==========過濾地點==========
-
-
+        # ==========過濾信仰==========
+        religion_list = request.POST.getlist('religion')
+        if len(religion_list) != 0:
+            q_set = filters_view.filter_religion(Member, q_set, religion_list)
+        # ==========過濾信仰==========
+        # ==========過濾關係==========
+        relationship_list = request.POST.getlist('relationship')
+        if len(relationship_list) != 0:
+            q_set = filters_view.filter_relationship(Member, q_set, relationship_list)
+        # ==========過濾關係==========
+        # ========過濾感情狀態========
+        relationship_status_list = request.POST.getlist('relationship_status')
+        if len(relationship_status_list) != 0:
+            q_set = filters_view.filter_relationship_status(Member, q_set, relationship_status_list)
+        # ========過濾感情狀態========
+        # ========過濾照片有無========
+            # 待決議
+        # ========過濾照片有無========
         end = q_set
-
-        end1 = Member.objects.get(id = 9).blood_type_id
+        end1 = Member.objects.get(id=9).blood_type_id
         return render(request,'match/end.html',{'end': end,'end1':end1})
     else:
         form = SearchForm()
-        ver1 = 'ver_view = %s' %(10045)
+        ver1 = 'ver_view = %s' % (10088,)
         return render(request,'match/test.html',{'test': form,'ver1':ver1})
 # =======ET=======

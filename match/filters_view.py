@@ -96,3 +96,42 @@ def filter_location(model, q_set, location_list):
         else:
             q_set_out[c] = q_set[c]
     return q_set_out
+
+
+def filter_religion(model, q_set, religion_list):
+    religion_list_copy = []
+    for c1 in range(len(religion_list)):
+        religion_list_copy.append(int(religion_list[c1]))
+    q_set_out = {}
+    for c in q_set:
+        if model.objects.get(id=int(c)).religion_id in religion_list_copy:
+            q_set_out[c] = q_set[c] + 1
+        else:
+            q_set_out[c] = q_set[c]
+    return q_set_out
+
+
+def filter_relationship(model, q_set, relationship_list):
+    relationship_list_copy = []
+    for c1 in range(len(relationship_list)):
+        relationship_list_copy.append(int(relationship_list[c1]))
+    q_set_out = {}
+    for c in q_set:
+        if model.objects.get(id=int(c)).relationship_id in relationship_list_copy:
+            q_set_out[c] = q_set[c] + 1
+        else:
+            q_set_out[c] = q_set[c]
+    return q_set_out
+
+
+def filter_relationship_status(model, q_set, relationship_status_list):
+    relationship_status_list_copy = []
+    for c1 in range(len(relationship_status_list)):
+        relationship_status_list_copy.append(int(relationship_status_list[c1]))
+    q_set_out = {}
+    for c in q_set:
+        if model.objects.get(id=int(c)).relationship_status_id in relationship_status_list_copy:
+            q_set_out[c] = q_set[c] + 1
+        else:
+            q_set_out[c] = q_set[c]
+    return q_set_out
