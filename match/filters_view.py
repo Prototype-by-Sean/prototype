@@ -83,3 +83,16 @@ def filter_blood_type(model, q_set, blood_type_list):
         else:
             q_set_out[c] = q_set[c]
     return q_set_out
+
+
+def filter_location(model, q_set, location_list):
+    location_list_copy = []
+    for c1 in range(len(location_list)):
+        location_list_copy.append(int(location_list[c1]))
+    q_set_out = {}
+    for c in q_set:
+        if model.objects.get(id=int(c)).location_id in location_list_copy:
+            q_set_out[c] = q_set[c] + 1
+        else:
+            q_set_out[c] = q_set[c]
+    return q_set_out
