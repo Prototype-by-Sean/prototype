@@ -142,5 +142,6 @@ def search_view(request):
         return render(request,'match/end.html',{'end': end,'end1':end1})
     else:
         form = SearchForm()
-        return render(request,'match/test.html',{'test': form})
+        ver1 = 'ver_view = %s' %(100)
+        return render(request,'match/test.html',{'test': form,'ver1':ver1})
 # =======ET=======
