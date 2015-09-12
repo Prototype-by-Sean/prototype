@@ -158,7 +158,13 @@ def search_view(request):
         # ========過濾照片有無========
             # 待決議
         # ========過濾照片有無========
-        end = q_set
+        # ========輸出優先名單========
+        q_set_list = []
+        for c1 in q_set:
+            q_set_list.append([c1,int(q_set[c1])])
+        q_set_list = sorted(q_set_list, key=lambda x: x[1], reverse=True)
+        # ========輸出優先名單========
+        end = q_set_list
         end1 = Member.objects.get(id=9).blood_type_id
         return render(request,'match/end.html',{'end': end,'end1':end1})
     else:

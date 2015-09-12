@@ -135,3 +135,9 @@ def filter_relationship_status(model, q_set, relationship_status_list):
         else:
             q_set_out[c] = q_set[c]
     return q_set_out
+
+
+# 測試區
+import socket
+
+# 測試區
