@@ -180,7 +180,7 @@ from django.template import RequestContext
 from dwebsocket.decorators import accept_websocket
 
 def base_view(request):
-    return render_to_response('index.html', {
+    return render_to_response('match/chat.html', {
 
     }, context_instance=RequestContext(request))
 
