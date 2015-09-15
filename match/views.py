@@ -173,3 +173,31 @@ def search_view(request):
         ver1 = 'ver_view = %s' % (9131207,)
         return render(request,'match/test.html',{'test': form,'ver1':ver1})
 # =======ET=======
+
+# ======TEST======
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+from dwebsocket.decorators import accept_websocket
+
+def base_view(request):
+    return render_to_response('index.html', {
+
+    }, context_instance=RequestContext(request))
+
+
+clients = []
+
+@accept_websocket
+def echo(request):
+    if request.is_websocket:
+        try:
+            clients.append(request.websocket)
+            for message in request.websocket:
+                if not message:
+                    break
+                for client in clients:
+                    client.send(message)
+        finally:
+            clients.remove(request.websocket)
+# ======TEST======
+
