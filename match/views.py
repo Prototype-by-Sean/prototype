@@ -95,16 +95,17 @@ def search_view(request):
         # ======生成搜索用queryset======
         # ====生成年齡範圍丟入filter=====
         # 生成 age_range = [10,11,12,13,14,15] 若無設定則生成 0 到 100
-        if len(form_in['age_min']) != 0 or len(form_in['age_max']) != 0:
+        if len(form_in['age_min']) != 0 or len(form_in['age_max']) != 0:  # 如果有輸入條件才開始進入過濾器
             if len(form_in['age_min']) == 0:
-                age_min = 0
+                age_min = 0  # 如果年齡最小值未輸入  則設為0
             else:
-                age_min = int(form_in['age_min'])
+                age_min = int(form_in['age_min'])  # 如果年齡最小值有輸入  讀進來
+
             if len(form_in['age_max']) == 0:
-                age_max = 300
+                age_max = 300  # 如果年齡最大值未輸入  則設為300
             else:
-                age_max = int(form_in['age_max'])
-            q_set = filters_view.filter_age(Member,q_set,age_min,age_max)
+                age_max = int(form_in['age_max'])  # 如果年齡最小值有輸入  讀進來
+            q_set = filters_view.filter_age(Member, q_set, age_min, age_max)  # 過濾器參數 ( 資料庫 , 字典 , 最小值 , 最大值 )
         # ====生成年齡範圍丟入filter=====
         # ====生成身高範圍丟入filter=====
         if len(form_in['height_min']) != 0 or len(form_in['height_max']) != 0:
@@ -131,8 +132,8 @@ def search_view(request):
             q_set = filters_view.filter_weight(Member,q_set,weight_min,weight_max)
         # ====生成體重範圍丟入filter=====
         # ==========過濾血型==========
-        blood_type_list = request.POST.getlist('blood_type')  # 清單，血型代號
-        if len(blood_type_list) != 0:
+        blood_type_list = request.POST.getlist('blood_type')  # 搜尋者要求的血型  為一清單型態  紀錄方式為 blood_type_id
+        if len(blood_type_list) != 0:  # 如果清單內有東西(有搜尋條件)  才開始過濾
             q_set = filters_view.filter_blood_type(Member, q_set, blood_type_list)
         # ==========過濾血型==========
         # ==========過濾地點==========
@@ -169,6 +170,6 @@ def search_view(request):
         return render(request,'match/end.html',{'end': end,'end1':end1})
     else:
         form = SearchForm()
-        ver1 = 'ver_view = %s' % (10088,)
+        ver1 = 'ver_view = %s' % (9131207,)
         return render(request,'match/test.html',{'test': form,'ver1':ver1})
 # =======ET=======
