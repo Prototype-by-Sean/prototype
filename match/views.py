@@ -28,7 +28,7 @@ def search_view(request):
         # 字典型態{'a':[1,2],'b':[5,6],'c':[]}
         # ======定義使用者本身性別======
         try:
-            my_biological_sex = Member.objects.filter(user=str(request.user))
+            my_biological_sex = Member.objects.get(user=str(request.user)).biological_sex
         except:
             my_biological_sex = None
         # ======定義使用者本身性別======
