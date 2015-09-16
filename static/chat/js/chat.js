@@ -3,7 +3,7 @@ $(function () {
             if(window.s){
                 window.s.close()
             }
-            var s = new WebSocket("ws://" + window.location.host + "/echo");
+            var s = new WebSocket("ws://" + window.location.host + "/match/echo");
             s.onopen = function () {
                 console.log('WebSocket open');
             };
