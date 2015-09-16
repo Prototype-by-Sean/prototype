@@ -32,9 +32,3 @@ TodoControllers.controller('TodoListCtrl', ['$scope', '$dragon', function ($scop
         $dragon.update('todo-item', item);
     }
 }]);
-
-function TTT($scope) {
-
-  $scope.name = "Anna";
-
-}
