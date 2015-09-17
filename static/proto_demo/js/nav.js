@@ -15,7 +15,7 @@ $(document).ready(function(){
 
     <!--以下功能為"不論再頁面的何處,只要滾輪往上滾,navbar就要在螢幕頂端滑下,若使用者不需要,三秒後自動收回"-->
 
-    var height_top = $(document).scrollTop()                        //上一次滾輪停止的終點,儲存作為滾動時的開始位置
+    var height_top = $(document).scrollTop();                        //上一次滾輪停止的終點,儲存作為滾動時的開始位置
     var height_top_2 = 0;                                           //同上,結束位置,此變數再下面動作為即時更新
     var navSlide = function(){                                      //把功能存到變數navSlide裡面,為了addEventListener觸發用
                         if(flag==0 || flag==1) {                    //避免動作重複偵測,對應flag2(除非不給偵測)否則都要跑下面的if
