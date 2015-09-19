@@ -3,7 +3,7 @@ $(function () {
             if(window.s){
                 window.s.close()
             }
-            var s = new WebSocket("ws://52.8.130.233/match/echo");
+            var s = new WebSocket("ws://52.8.130.233:8080/match/echo");
             s.onopen = function () {
                 console.log('WebSocket open');
             };
@@ -27,3 +27,4 @@ $(function () {
         });
 
     });
+x
